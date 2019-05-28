@@ -1,1 +1,1 @@
-# nhlDataAnalysisProject
+# NHL-DataAnalysisProject
