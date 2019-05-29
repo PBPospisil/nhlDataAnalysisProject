@@ -12,6 +12,8 @@ All of the needed libraries are contained in the latest anaconda distribution.
 Python 3.6.4
 conda 4.5.12
 ```
+### Play after a Giveaway
+![barplot-play-after-GA](https://user-images.githubusercontent.com/21959159/58521134-a2dd9500-8178-11e9-99cb-39153086251b.png)
 
 ### Converted Giveaways
 Trisurface plot of the number of converted GAs under 10 seconds by distance from GA to net and time
