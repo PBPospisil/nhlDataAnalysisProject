@@ -8,7 +8,7 @@ All of the needed libraries are contained in the latest anaconda distribution.
 ### Prerequisites
 
 ```
-Python 3.6.4
+Python 3+
 conda 4.5.12
 ```
 ## Running Scripts
