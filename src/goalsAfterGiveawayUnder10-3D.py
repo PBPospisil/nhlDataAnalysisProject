@@ -15,51 +15,49 @@ from matplotlib import animation
 
 #lines = csvToDF_largeFile('../game_plays.csv')
 
-game_plays_after_GA_df = csvToDF('../py_scripts/goals_to_extract_withGA.csv')
-giveaways_plays_after_GA_df = csvToDF('../py_scripts/goals_to_extract_withGA.csv')
+playsAfterGiveawayDF = csvToDF('../py_scripts/goals_to_extract_withGA.csv')
 
-for index, value in enumerate(game_plays_after_GA_df['x']):
+for index, value in enumerate(playsAfterGiveawayDF['x']):
     if (value == 'NA'):
         print(value)
 
-game_plays_after_GA_df.loc[:,'x'] = game_plays_after_GA_df.x.astype(np.int)
-game_plays_after_GA_df.loc[:,'y'] = game_plays_after_GA_df.y.astype(np.int)
-game_plays_after_GA_df.loc[:,'x_'] = game_plays_after_GA_df.x_.astype(np.int)
-game_plays_after_GA_df.loc[:,'y_'] = game_plays_after_GA_df.y_.astype(np.int)
-game_plays_after_GA_df.loc[:,'period_time'] = game_plays_after_GA_df.period_time.astype(np.int)
+playsAfterGiveawayDF.loc[:,'x'] = playsAfterGiveawayDF.x.astype(np.int)
+playsAfterGiveawayDF.loc[:,'y'] = playsAfterGiveawayDF.y.astype(np.int)
+playsAfterGiveawayDF.loc[:,'x_'] = playsAfterGiveawayDF.x_.astype(np.int)
+playsAfterGiveawayDF.loc[:,'y_'] = playsAfterGiveawayDF.y_.astype(np.int)
+playsAfterGiveawayDF.loc[:,'period_time'] = playsAfterGiveawayDF.period_time.astype(np.int)
 
-game_plays_after_GA_only_goals_df = game_plays_after_GA_df.loc[game_plays_after_GA_df['5'] == 'Goal']
+playsAfterGiveawayOnlyGoalsDF = playsAfterGiveawayDF.loc[playsAfterGiveawayDF['5'] == 'Goal']
 
 distanceFromGA = []
 timeFromGA = []
 
-for index, _ in enumerate(game_plays_after_GA_df['0']):
-    if game_plays_after_GA_df.iloc[index, 5] == 'Goal':
-        distance_ga_net = math.sqrt((-100 - game_plays_after_GA_df.iloc[index-1, 17])**2 + (game_plays_after_GA_df.iloc[index-1, 18])**2)
-        distanceFromGA += [distance_ga_net]
+for index, _ in enumerate(playsAfterGiveawayDF['0']):
+    if playsAfterGiveawayDF.iloc[index, 5] == 'Goal':
+        distanceFromGiveawayToNet = math.sqrt((-100 - playsAfterGiveawayDF.iloc[index-1, 17])**2 + (playsAfterGiveawayDF.iloc[index-1, 18])**2)
+        distanceFromGA += [distanceFromGiveawayToNet]
 
-        if game_plays_after_GA_df.iloc[index, 11] - game_plays_after_GA_df.iloc[index-1, 11] > 0:
-            timediff = game_plays_after_GA_df.iloc[index, 11] - game_plays_after_GA_df.iloc[index-1, 11]
+        if playsAfterGiveawayDF.iloc[index, 11] - playsAfterGiveawayDF.iloc[index-1, 11] > 0:
+            timediff = playsAfterGiveawayDF.iloc[index, 11] - playsAfterGiveawayDF.iloc[index-1, 11]
         else:
             timediff = 0
         timeFromGA += [timediff]
 
 
-game_plays_after_GA_only_goals_df['distance_to_goal'] = distanceFromGA
-game_plays_after_GA_only_goals_df['time_from_ga'] = timeFromGA
+playsAfterGiveawayOnlyGoalsDF['distance_to_goal'] = distanceFromGA
+playsAfterGiveawayOnlyGoalsDF['time_from_ga'] = timeFromGA
 
-game_plays_after_GA_only_goals_df = game_plays_after_GA_only_goals_df.loc[game_plays_after_GA_only_goals_df['time_from_ga'] < 100]
+playsAfterGiveawayOnlyGoalsDF = playsAfterGiveawayOnlyGoalsDF.loc[playsAfterGiveawayOnlyGoalsDF['time_from_ga'] < 100]
 
 style = dict(size=8, color='black')
 
-sortedByTimeDistance = game_plays_after_GA_only_goals_df.sort_values(by=['time_from_ga', 'distance_to_goal'], ascending=True)
+sortedByTimeDistance = playsAfterGiveawayOnlyGoalsDF.sort_values(by=['time_from_ga', 'distance_to_goal'], ascending=True)
 
 zValues = []
 yValues = []
 xValues = []
 timeDistancePermutations = defaultdict(int)
 timeDistancePermutationsRounded = defaultdict(int)
-
 
 for index, time in enumerate(sortedByTimeDistance['time_from_ga']):
     distance = sortedByTimeDistance.iloc[index, 20]
@@ -71,7 +69,6 @@ for index, time in enumerate(sortedByTimeDistance['time_from_ga']):
         timeDistancePermutationsRounded[' '.join([str(time), str(0)])] = 0
     timeDistancePermutationsRounded[' '.join([str(round(time)), str(round(j))])] += 1
 
-
 i = 0
 for key in timeDistancePermutationsRounded.keys():
     [time, distance] = key.split(' ')
@@ -82,8 +79,8 @@ for key in timeDistancePermutationsRounded.keys():
 topPercentage = 0
 for key in sorted(timeDistancePermutationsRounded, key=timeDistancePermutationsRounded.get, reverse=True):
     if i < 20:
-        topPercentage += timeDistancePermutationsRounded[key]/len(game_plays_after_GA_only_goals_df['0'])
-        print(key, timeDistancePermutationsRounded[key], timeDistancePermutationsRounded[key]/len(game_plays_after_GA_only_goals_df['0']))
+        topPercentage += timeDistancePermutationsRounded[key]/len(playsAfterGiveawayOnlyGoalsDF['0'])
+        print(key, timeDistancePermutationsRounded[key], timeDistancePermutationsRounded[key]/len(playsAfterGiveawayOnlyGoalsDF['0']))
     i += 1
 
 print(topPercentage, len(timeDistancePermutationsRounded.keys()))
