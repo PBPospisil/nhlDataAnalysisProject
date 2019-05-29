@@ -2,7 +2,6 @@
 
 Data analysis of the 'NHL Game Data', the dataset from kaggle and contributed by Marting Ellis. This project contains a series of scripts to filter data for processing and visualization. Spanning 6 years and containing rich detail for every play such as location on the ice and secondary play type, this data set motivated an effort to analyze NHL data and reveal new insights and characterize known tendencies. 
 
-[NHL Game Data](https://www.kaggle.com/martinellis/nhl-game-data) - kaggle dataset
 
 ## Getting Started
 All of the needed libraries are contained in the latest anaconda distribution.
@@ -12,6 +11,11 @@ All of the needed libraries are contained in the latest anaconda distribution.
 Python 3.6.4
 conda 4.5.12
 ```
+## Running Scripts
+Download the Kaggle Dataset here: [NHL Game Data](https://www.kaggle.com/martinellis/nhl-game-data)
+
+
+
 ### Play after a Giveaway
 ![barplot-play-after-GA](https://user-images.githubusercontent.com/21959159/58521134-a2dd9500-8178-11e9-99cb-39153086251b.png)
 
