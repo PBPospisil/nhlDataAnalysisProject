@@ -28,3 +28,4 @@ Trisurface plot of the number of converted GAs under 10 seconds by distance from
 ![barplot-goal-type-after-GA-under10sec](https://user-images.githubusercontent.com/21959159/58521117-87728a00-8178-11e9-85fe-a43a18417b36.png)
 
 
+![density-plot-play-until-goal-GA-with-stoppages](https://user-images.githubusercontent.com/21959159/58522103-1634d600-817c-11e9-805c-b34d4bb7f1e2.png)
