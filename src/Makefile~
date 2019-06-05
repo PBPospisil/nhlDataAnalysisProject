@@ -1,0 +1,10 @@
+clean:
+	rm -rf *.pyc *~
+
+subset:
+	python3 filterCsvForGoalsAfterGA.py
+	python3 filterCsvForPlaysAfterGA.py
+	python3 filterCsvForAllGoals.py
+
+data:
+	mkdir ../data

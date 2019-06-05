@@ -7,9 +7,9 @@ import seaborn as sns; sns.set()
 import matplotlib.pyplot as plt
 
 
-goalieStatsDF = csvToDF('../game_goalie_stats.csv')
-gameDF = csvToDF('../game.csv')
-playersDF = csvToDF('../player_info.csv')
+goalieStatsDF = csvToDF('../data/game_goalie_stats.csv')
+gameDF = csvToDF('../data/game.csv')
+playersDF = csvToDF('../data/player_info.csv')
 
 goalieStatsDF.loc[:,'timeOnIce'] = goalieStatsDF.timeOnIce.astype(np.int)
 
@@ -82,7 +82,11 @@ plt.title('Win% vs. GAA for goalies with >60 GP from 2013-2017')
 plt.annotate('Correlation coefficient: ' + str(oneSeasonEntire['GAA'].corr(oneSeasonEntire['winPercentage'])), xy=(0.65, 0.95), xycoords='axes fraction')
 ax = sns.regplot(x="GAA", y="winPercentage", data=oneSeasonEntire)
 #print('Correlation coefficient: ', oneSeasonEntire['GAA'].corr(oneSeasonEntire['winPercentage']))
-plt.show()
+
+checkAndMakeImgFolder()
+
+os.remove('../img/gaa-win-percentage-replot.png')
+plt.savefig('../img/gaa-win-percentage-replot.png', bbox_inches='tight')
 
 
 

@@ -2,7 +2,6 @@ import pandas
 import numpy as np
 import csv
 from csvToDF import csvToDF
-from csvToDF_largeFile import csvToDF_largeFile
 from collections import defaultdict
 import seaborn as sns; sns.set()
 import matplotlib.pyplot as plt
@@ -13,9 +12,8 @@ from scipy.stats import norm
 from matplotlib import animation
 
 
-#lines = csvToDF_largeFile('../game_plays.csv')
 
-playsAfterGiveawayDF = csvToDF('../py_scripts/goals_to_extract_withGA.csv')
+playsAfterGiveawayDF = csvToDF('../data/extractGoalsWithGA.csv')
 
 for index, value in enumerate(playsAfterGiveawayDF['x']):
     if (value == 'NA'):
@@ -47,7 +45,7 @@ for index, _ in enumerate(playsAfterGiveawayDF['0']):
 playsAfterGiveawayOnlyGoalsDF['distance_to_goal'] = distanceFromGA
 playsAfterGiveawayOnlyGoalsDF['time_from_ga'] = timeFromGA
 
-playsAfterGiveawayOnlyGoalsDF = playsAfterGiveawayOnlyGoalsDF.loc[playsAfterGiveawayOnlyGoalsDF['time_from_ga'] < 100]
+playsAfterGiveawayOnlyGoalsDF = playsAfterGiveawayOnlyGoalsDF.loc[playsAfterGiveawayOnlyGoalsDF['time_from_ga'] < 60]
 
 style = dict(size=8, color='black')
 
@@ -99,12 +97,14 @@ def animate(i):
 
 plt.xlabel('Time')
 plt.ylabel('Distance')
-plt.title('Time and Distance count for goals < 10 sec after GA')
+plt.title('Time and Distance count for goals < 60 sec after GA')
 
 # Animate
 anim = animation.FuncAnimation(fig, animate, init_func=init,
                                frames=360, interval=20, blit=True)
 # Save
-anim.save('less-than-60sec.mp4', writer=writer)
 
-plt.show()
+checkAndMakeImgFolder()
+
+os.remove('../img/less-than-60sec.mp4')
+anim.save('../img/less-than-60sec.mp4', writer=writer)
