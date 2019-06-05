@@ -1,7 +1,0 @@
-git:
-	git add .
-	git commit -m $(comm) 
-	git push origin master
-clean:
-	rm -rf *~ *#y
- 	clear
