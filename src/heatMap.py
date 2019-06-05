@@ -2,11 +2,12 @@ import os
 import pandas
 import numpy as np
 import csv
+import seaborn as sns; sns.set()
+import matplotlib.pyplot as plt
+
 from csvToDF import csvToDF
 from csvToDF import checkAndMakeImgFolder
 from collections import defaultdict
-import seaborn as sns; sns.set()
-import matplotlib.pyplot as plt
 
 
 goalsDF = csvToDF('../data/goals.csv')
@@ -19,7 +20,7 @@ goalsDF = goalsDF.drop(goalsDF.loc[goalsDF['secondaryType'] == 'NA'].index)
 goalsDF.loc[:,'x'] = goalsDF.x.astype(np.float)
 goalsDF.loc[:,'y'] = goalsDF.y.astype(np.float)
 
-for goalType in (goalsDF['secondaryType'].unique()):
+for index, goalType in enumerate(goalsDF['secondaryType'].unique()):
     sns.jointplot(x='x', y='y', data=goalsDF.loc[goalsDF['secondaryType'] == goalType],
                   kind='kde', color='r', xlim=(-100,100), ylim=(-42.5,42.5))
 
