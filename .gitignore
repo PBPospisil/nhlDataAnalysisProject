@@ -4,3 +4,4 @@ __pycache__/
 *.csv
 Makefile
 .DS_Store
+img/
