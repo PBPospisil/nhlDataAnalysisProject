@@ -1,7 +1,7 @@
 git:
 	git add .
-	git commit -m $(-m) 
+	git commit -m $(comm) 
 	git push origin master
 clean:
-	rm -rf *~
-	clear
+	rm -rf *~ *#y
+ 	clear
