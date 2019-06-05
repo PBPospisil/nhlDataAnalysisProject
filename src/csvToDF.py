@@ -8,18 +8,17 @@ import sys
 
 
 def csvToDataframeAndUi(csvfile):
-    lines = blocks = rowSize = totalLines = linesProcessedLastTime = 0; csvArr = []
+    uploadSpeed = lines = blocks = rowSize = totalLines = linesProcessedLastTime = 0;
     totalSizeInMemory, rowSizeInMemory = getMemorySize(csvfile)
     csvfileFile = open(csvfile); csvReader = csv.reader(csvfileFile)
-    initialTime = lastTime = time.time(); print()
+    csvArr = []; initialTime = lastTime = time.time(); print();
 
     for row in csvReader:
-        csvArr = csvArr + [row]
-        now = time.time()
-        lines += 1; linesProcessedLastTime = lines
-        uploadSpeed = getUploadSpeed(now, lastTime, lines,
-                                     linesProcessedLastTime,
-                                     rowSizeInMemory)
+        csvArr = csvArr + [row]; now = time.time(); lines += 1;
+        uploadSpeed, lastTime, linesProcessedLastTime = getUploadSpeed(now, lastTime, lines,
+                                                                       linesProcessedLastTime,
+                                                                       rowSizeInMemory,
+                                                                       uploadSpeed)
         blocks = statusBar(lines, blocks, totalSizeInMemory,
                            rowSizeInMemory,
                            now-initialTime, uploadSpeed)
@@ -42,13 +41,12 @@ def getMemorySize(csvfile):
 
     return totalRowSize, rowSize
 
-def getUploadSpeed(now, lastTime, lines, linesProcessedLastTime, rowSize):
-    bytesProcessed = 0;
+def getUploadSpeed(now, lastTime, lines, linesProcessedLastTime, rowSize, bytesProcessed):
     if now - lastTime >= 1:
         bytesProcessed = (lines - linesProcessedLastTime) * rowSize
         lastTime = now
-
-    return bytesProcessed
+        linesProcessedLastTime = lines;
+    return bytesProcessed, lastTime, linesProcessedLastTime
 
 def checkAndMakeImgFolder(heatmap=False):
     if heatmap:
