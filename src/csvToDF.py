@@ -7,7 +7,31 @@ import math
 import sys
 
 
-def getMemorySize(mode=total):
+def csvToDataframeAndUi(csvfile):
+    lines = blocks = rowSize = totalLines = linesProcessedLastTime = 0; csvArr = []
+    totalSizeInMemory, rowSizeInMemory = getMemorySize(csvfile)
+    csvfileFile = open(csvfile); csvReader = csv.reader(csvfileFile)
+    initialTime = lastTime = time.time(); print()
+
+    for row in csvReader:
+        csvArr = csvArr + [row]
+        now = time.time()
+        lines += 1; linesProcessedLastTime = lines
+        uploadSpeed = getUploadSpeed(now, lastTime, lines,
+                                     linesProcessedLastTime,
+                                     rowSizeInMemory)
+        blocks = statusBar(lines, blocks, totalSizeInMemory,
+                           rowSizeInMemory,
+                           now-initialTime, uploadSpeed)
+    finishing()
+    csvfileFile.close()
+
+    return csvArr
+
+def cleanDataFrame(csvArr):
+    return pandas.DataFrame(np.array(csvArr), columns=csvArr[0]).drop([0])
+
+def getMemorySize(csvfile):
     totalRowSize=0; rowSize=0
     csvfileFileSize = open(csvfile); csvReaderSize = csv.reader(csvfileFileSize)
     for index, row in enumerate(csvReaderSize):
@@ -16,10 +40,15 @@ def getMemorySize(mode=total):
         totalRowSize += sys.getsizeof(row)
     csvfileFileSize.close()
 
-    if mode == 'row':
-        return rowSize
-    else:
-        return totalRowSize
+    return totalRowSize, rowSize
+
+def getUploadSpeed(now, lastTime, lines, linesProcessedLastTime, rowSize):
+    bytesProcessed = 0;
+    if now - lastTime >= 1:
+        bytesProcessed = (lines - linesProcessedLastTime) * rowSize
+        lastTime = now
+
+    return bytesProcessed
 
 def checkAndMakeImgFolder(heatmap=False):
     if heatmap:
@@ -60,52 +89,48 @@ def getHourGlass(phase):
 
     return hourGlasses[phase]
 
-def statusBar(lines, blocks, fileSize, rowSize, duration, bytesPerSecond, prefix=' Importing csv... ', suffix='Complete', block='\u2588', unFilled=50):
+def getUiPercent(lines, rowSize, fileSize):
+    return ('{0:.' + str(1) + 'f}').format(100 * float(lines * rowSize) / fileSize)
+
+def getUiBar(blocks, block, unFilled):
+    return blocks * block + unFilled * '-'
+
+def getUiFileSizeFraction(lines, rowSize, fileSize):
+    return '[' + displayBytes(lines*rowSize) + '/' + displayBytes(fileSize) + ']'
+
+def getUihourGlass(duration):
+    return getHourGlass(math.floor((duration - math.floor(duration)) / 0.125))
+
+def getBlocks(lines, rowSize, blocks, blockSize):
+    if (lines * rowSize >= blocks * blockSize):
+        blocks += 1
+    return blocks
+
+def printUi(percent, bar, fileSizeFraction, hourGlass, bytesPerSecond,
+            prefix=' Importing csv... ', suffix='Complete', block='\u2588', unFilled=25):
+
+    print('\r%s |%s| %s%% %s %s %s %s %s' % (prefix, bar, percent, suffix,
+                                             fileSizeFraction,
+                                             displayBytes(bytesPerSecond) + '/s',
+                                             hourGlass, '   '),
+                                             end='\r')
+
+def composeUi(lines, rowSize, fileSize, blocks, block, unFilled, duration, bytesPerSecond):
+    printUi(getUiPercent(lines, rowSize, fileSize), getUiBar(blocks, block, unFilled),
+          getUiFileSizeFraction(lines, rowSize, fileSize), getUihourGlass(duration),
+          bytesPerSecond)
+
+def statusBar(lines, blocks, fileSize, rowSize, duration, bytesPerSecond, prefix=' Importing csv... ', suffix='Complete', block='\u2588', unFilled=25):
     blockSize = fileSize / 25
     unFilled = 25 - blocks
 
-    percent = ('{0:.' + str(1) + 'f}').format(100 * float(lines * rowSize) / fileSize)
-    bar = blocks * block + unFilled * '-'
-    fileSizeFraction = '[' + displayBytes(lines*rowSize) + '/' + displayBytes(fileSize) + ']'
-    hourGlass = getHourGlass(math.floor((duration - math.floor(duration)) / 0.125))
+    composeUi(lines, rowSize, fileSize, blocks, block, unFilled, duration, bytesPerSecond)
 
-    print('\r%s |%s| %s%% %s %s %s %s %s' % (prefix, bar, percent, suffix, fileSizeFraction, displayBytes(bytesPerSecond) + '/s', hourGlass, '   '), end='\r')
-
-    if (lines * rowSize >= blocks * blockSize):
-        blocks += 1
-
-    return blocks
+    return getBlocks(lines, rowSize, blocks, blockSize)
 
 def csvToDF(csvfile):
-    lines=0; blocks=0; rowSize = 0; totalLines=0
-    csvArr = []
-
     try:
-        csvfileFile = open(csvfile)
-        csvReader = csv.reader(csvfileFile)
-        linesProcessedLastTime = 0
-        t1 = time.time()
-        lastTime = time.time()
-        bytesProcessed = 0
-        print()
-
-        for row in csvReader:
-            if rowSize == 0:
-                rowSize = sys.getsizeof(row)
-            csvArr = csvArr + [row]
-            lines += 1
-            t2 = time.time()
-            if t2 - lastTime >= 1:
-                bytesProcessed = (lines - linesProcessedLastTime) * rowSize
-                linesProcessedLastTime = lines
-                lastTime = t2
-
-            blocks = statusBar(lines, blocks, getMemorySize(), rowSize, t2-t1, bytesProcessed)
-
-        finishing()
-        csvDF = pandas.DataFrame(np.array(csvArr), columns=csvArr[0]).drop([0])
-
-        return csvDF
+        return cleanDataFrame(csvToDataframeAndUi(csvfile))
 
     except IOError:
         print('An error occured trying to read this file: ' + csvfile)

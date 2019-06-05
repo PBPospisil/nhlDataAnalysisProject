@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 
 goalsDF = csvToDF('../data/goals.csv')
-
+print(goalsDf)
 goalsDF = goalsDF.drop(goalsDF.loc[goalsDF['x'] == 'NA'].index)
 goalsDF = goalsDF.drop(goalsDF.loc[goalsDF['x'] == 'x'].index)
 goalsDF = goalsDF.drop(goalsDF.loc[goalsDF['secondaryType'] == 'x'].index)
