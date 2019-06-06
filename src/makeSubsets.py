@@ -132,19 +132,19 @@ if not os.path.isdir('../data'):
 
 print('\nMaking subset 1/3...\n')
 
-if os.path.isdir('../data/goalsAfterGA.csv'):
+if os.path.exists('../data/goalsAfterGA.csv'):
     os.remove('../data/goalsAfterGA.csv')
 filterCsvForGoalsAfterGA('../../../game_plays.csv')
 
 print('\nMaking subset 2/3...\n')
 
-if os.path.isdir('../data/goals.csv'):
+if os.path.exists('../data/goals.csv'):
     os.remove('../data/goals.csv')
 filterCsvForAllGoals('../../../game_plays.csv')
 
 print('\nMaking subset 3/3...\n')
 
-if os.path.isdir('../data/play_after_GA.csv'):
+if os.path.exists('../data/play_after_GA.csv'):
     os.remove('../data/play_after_GA.csv')
 filterCsvForPlaysAfterGA('../../../game_plays.csv')
 

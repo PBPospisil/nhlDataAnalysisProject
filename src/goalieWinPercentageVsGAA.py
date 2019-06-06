@@ -1,7 +1,9 @@
+import os
 import pandas
 import numpy as np
 import csv
 from csvToDF import csvToDF
+from csvToDF import checkAndMakeImgFolder
 from collections import defaultdict
 import seaborn as sns; sns.set()
 import matplotlib.pyplot as plt
@@ -69,25 +71,33 @@ for outerIndex, playerSeason in enumerate(oneSeasonEntire['playerSeasonIdList'])
             if playerSpecific.iloc[innerIndex, 15] == 'W':
                 oneSeasonEntire.iloc[outerIndex, 2] += 1
             oneSeasonEntire.iloc[outerIndex, 5] += 1
-    oneSeasonEntire.iloc[outerIndex, 3] = ((oneSeasonEntire.iloc[outerIndex, 7] - oneSeasonEntire.iloc[outerIndex, 8]) * 3600) / oneSeasonEntire.iloc[outerIndex, 1]
-    if oneSeasonEntire.iloc[outerIndex, 7] != 0:
+
+    if oneSeasonEntire.iloc[outerIndex, 1]:
+        oneSeasonEntire.iloc[outerIndex, 3] = ((oneSeasonEntire.iloc[outerIndex, 7] - oneSeasonEntire.iloc[outerIndex, 8]) * 3600) / oneSeasonEntire.iloc[outerIndex, 1]
+    else:
+        oneSeasonEntire.iloc[outerIndex, 3] = ((oneSeasonEntire.iloc[outerIndex, 7] - oneSeasonEntire.iloc[outerIndex, 8]) * 3600) / 1
+    if oneSeasonEntire.iloc[outerIndex, 7]:
         oneSeasonEntire.iloc[outerIndex, 4] = int(oneSeasonEntire.iloc[outerIndex, 8]) / int(oneSeasonEntire.iloc[outerIndex, 7])
-    oneSeasonEntire.iloc[outerIndex, 6] = oneSeasonEntire.iloc[outerIndex, 2] / oneSeasonEntire.iloc[outerIndex, 5]
+    else:
+        oneSeasonEntire.iloc[outerIndex, 4] = int(oneSeasonEntire.iloc[outerIndex, 8]) / 1
+    if oneSeasonEntire.iloc[outerIndex, 5]:
+        oneSeasonEntire.iloc[outerIndex, 6] = oneSeasonEntire.iloc[outerIndex, 2] / oneSeasonEntire.iloc[outerIndex, 5]
+    else:
+        oneSeasonEntire.iloc[outerIndex, 6] = oneSeasonEntire.iloc[outerIndex, 2] / 1
 
 oneSeasonEntire = oneSeasonEntire.drop(oneSeasonEntire.loc[oneSeasonEntire['gamesPlayed'] < 60].index)
 oneSeasonEntire = oneSeasonEntire.reset_index(drop=True)
-print(oneSeasonEntire.info())
 
+plt.figure(figsize=(12, 9))
 plt.title('Win% vs. GAA for goalies with >60 GP from 2013-2017')
 plt.annotate('Correlation coefficient: ' + str(oneSeasonEntire['GAA'].corr(oneSeasonEntire['winPercentage'])), xy=(0.65, 0.95), xycoords='axes fraction')
 ax = sns.regplot(x="GAA", y="winPercentage", data=oneSeasonEntire)
-#print('Correlation coefficient: ', oneSeasonEntire['GAA'].corr(oneSeasonEntire['winPercentage']))
+plt.xlabel('GAA')
+plt.ylabel("win percentage")
+
 
 checkAndMakeImgFolder()
 
-os.remove('../img/gaa-win-percentage-replot.png')
+if os.path.exists('../img/gaa-win-percentage-replot.png'):
+    os.remove('../img/gaa-win-percentage-replot.png')
 plt.savefig('../img/gaa-win-percentage-replot.png', bbox_inches='tight')
-
-
-
-##

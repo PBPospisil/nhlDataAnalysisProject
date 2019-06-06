@@ -1,8 +1,9 @@
+import os
 import pandas
 import numpy as np
 import csv
 from csvToDF import csvToDF
-from csvToDF_largeFile import csvToDF_largeFile
+from csvToDF import checkAndMakeImgFolder
 from collections import defaultdict
 import seaborn as sns; sns.set()
 import matplotlib.pyplot as plt
@@ -333,7 +334,8 @@ while (1):
 
     checkAndMakeImgFolder()
 
-    os.remove(figureName)
+    if os.path.exists(figureName):
+        os.remove(figureName)
     plt.savefig(figureName, bbox_inches='tight')
 
 #

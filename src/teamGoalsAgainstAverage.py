@@ -1,8 +1,9 @@
+import os
 import pandas
 import numpy as np
 import csv
 from csvToDF import csvToDF
-from csvToDF_largeFile import csvToDF_largeFile
+from csvToDF import checkAndMakeImgFolder
 from collections import defaultdict
 import seaborn as sns; sns.set()
 import matplotlib.pyplot as plt
@@ -89,7 +90,8 @@ plt.title('GAA vs. Time with focus on ' + shortNameMainTeam + ' ' + teamNameMain
 
 checkAndMakeImgFolder()
 
-os.remove('../img/team-gaa-' + shortNameMainTeam)
+if os.path.exists('../img/team-gaa-' + shortNameMainTeam):
+    os.remove('../img/team-gaa-' + shortNameMainTeam)
 plt.savefig('../img/team-gaa-' + shortNameMainTeam, bbox_inches='tight')
 
 #

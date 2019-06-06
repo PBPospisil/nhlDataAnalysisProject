@@ -1,15 +1,17 @@
+import os
 import pandas
 import numpy as np
 import csv
-from csvToDF import csvToDF
-from collections import defaultdict
 import seaborn as sns; sns.set()
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+from matplotlib import rcParams
 
+from csvToDF import csvToDF
+from csvToDF import checkAndMakeImgFolder
 
-#lines = csvToDF_largeFile('../game_plays.csv')
-#print(lines)
+from collections import defaultdict
+
 
 playAfterGiveaway = csvToDF('../data/play_after_GA.csv')
 eventAfterGiveawayCount = defaultdict(int)
@@ -24,6 +26,7 @@ for event in playAfterGiveaway['event']:
 keys = np.array(list(eventAfterGiveawayCount.keys()))
 vals = np.array(list(eventAfterGiveawayCount.values())).astype(float)
 
+plt.figure(figsize=(12, 9))
 plt.xlabel('Type of play')
 plt.ylabel('Count')
 plt.title('Barplot of the next play after a Giveaway')
@@ -32,5 +35,6 @@ ax = sns.barplot(x=keys[:11], y=vals[:11])
 
 checkAndMakeImgFolder()
 
-os.remove('../img/barplot-next-play-after-giveaway.png')
+if os.path.exists('../img/barplot-next-play-after-giveaway.png'):
+    os.remove('../img/barplot-next-play-after-giveaway.png')
 plt.savefig('../img/barplot-next-play-after-giveaway.png', bbox_inches='tight')

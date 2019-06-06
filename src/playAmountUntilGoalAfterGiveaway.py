@@ -1,12 +1,13 @@
+import os
 import pandas
 import numpy as np
 import csv
 from csvToDF import csvToDF
+from csvToDF import checkAndMakeImgFolder
 from collections import defaultdict
 import seaborn as sns; sns.set()
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-
 
 
 goalsInBetweenGAandStoppage = csvToDF('../data/goalsAfterGA.csv')
@@ -37,6 +38,7 @@ for index, _ in enumerate(sortedByPlayID['game_id']):
         and sortedByPlayID.iloc[index,3] == teamGainingPossession):
         goalsAfterGiveawayCount += [int(sortedByPlayID.iloc[index,2]) - int(playNum)]
 
+plt.figure(figsize=(12, 9))
 ax = sns.distplot(a=goalsAfterGiveawayCount, hist=True, kde=True,
                   color='darkblue', hist_kws={'edgecolor':'black'},
                   kde_kws={'linewidth': 4})
@@ -44,9 +46,8 @@ plt.xlabel('Plays after Giveaway')
 plt.ylabel('Density')
 plt.title('Density Plot and Histogram of plays until goal scored after giveaway')
 
-plt.legend()
-
 checkAndMakeImgFolder()
 
-os.remove('../img/density-plot-plays-unitl-goal-after-giveaway.png')
+if os.path.exists('../img/density-plot-plays-unitl-goal-after-giveaway.png'):
+    os.remove('../img/density-plot-plays-unitl-goal-after-giveaway.png')
 plt.savefig('../img/density-plot-plays-unitl-goal-after-giveaway.png', bbox_inches='tight')

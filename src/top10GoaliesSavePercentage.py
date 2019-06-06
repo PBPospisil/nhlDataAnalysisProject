@@ -1,8 +1,9 @@
+import os
 import pandas
 import numpy as np
 import csv
 from csvToDF import csvToDF
-from csvToDF_largeFile import csvToDF_largeFile
+from csvToDF import checkAndMakeImgFolder
 from collections import defaultdict
 import seaborn as sns; sns.set()
 import matplotlib.pyplot as plt
@@ -72,10 +73,6 @@ plt.legend()
 
 checkAndMakeImgFolder()
 
-os.remove('../img/lineplot-goalies-top10-minutes-save-percentage.png')
+if os.path.exists('../img/lineplot-goalies-top10-minutes-save-percentage.png'):
+    os.remove('../img/lineplot-goalies-top10-minutes-save-percentage.png')
 plt.savefig('../img/lineplot-goalies-top10-minutes-save-percentage.png', bbox_inches='tight')
-
-
-
-
-#

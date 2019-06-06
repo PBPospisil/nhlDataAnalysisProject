@@ -48,13 +48,13 @@ def getUploadSpeed(now, lastTime, lines, linesProcessedLastTime, rowSize, bytesP
         linesProcessedLastTime = lines;
     return bytesProcessed, lastTime, linesProcessedLastTime
 
-def checkAndMakeImgFolder(heatmap=False):
-    if heatmap:
+def checkAndMakeImgFolder(jointplot=False):
+    if jointplot:
         if not os.path.isdir('../img'):
-            os.makedirs('../img/heatmaps')
+            os.makedirs('../img/joinplots')
         else:
-            if not os.path.isdir('../img/heatmaps'):
-                os.makedirs('../img/heatmaps')
+            if not os.path.isdir('../img/joinplots'):
+                os.makedirs('../img/joinplots')
     else:
         if not os.path.isdir('../img'):
             os.mkdir('../img')
