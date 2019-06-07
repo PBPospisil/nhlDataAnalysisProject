@@ -12,7 +12,7 @@ from scipy.stats import norm
 from math import sqrt
 import sys
 
-teamInfo = csvToDF('../data/teamInfo.csv')
+teamInfo = csvToDF('../data/team_info.csv')
 goalieStatsDF = csvToDF('../data/game_goalie_stats.csv')
 gamesDF = csvToDF('../data/game.csv')
 
@@ -75,23 +75,24 @@ teamColors = {'1':'red', '4':'darkorange', '26':'black', '14':'blue', '6':'yello
                 '29':'blue', '52':'blue', '54':'yellow', '12':'red', '7':'blue',
                  '22':'orange', '53':'maroon', '11':'blue'}
 
+plt.figure(figsize=(12, 9))
 plt.plot('TOI', 'GAA', data=teamGAA_df.loc[teamGAA_df['team_id'] == mainTeam], label=abbrMainTeam, color=teamColors[mainTeam], zorder=30)
 plt.legend()
 for team in teamGAA_df['team_id'].unique():
     if team != mainTeam:
         plt.plot('TOI', 'GAA', data=teamGAA_df.loc[teamGAA_df['team_id'] == team], color='grey')
 
-plt.ylim(1.4,2.4)
+plt.ylim(1.4,2.7)
 plt.xticks(ticks, labels_, fontsize=6)
 plt.xlim(50, 550)
 plt.ylabel('GAA')
-plt.xlabel('Game Date')
-plt.title('GAA vs. Time with focus on ' + shortNameMainTeam + ' ' + teamNameMainTeam + ' from 2013-2018')
+plt.xlabel('game date')
+plt.title('GAA vs. time with focus on ' + shortNameMainTeam + ' ' + teamNameMainTeam + ' from 2010-2019')
 
 checkAndMakeImgFolder()
 
-if os.path.exists('../img/team-gaa-' + shortNameMainTeam):
-    os.remove('../img/team-gaa-' + shortNameMainTeam)
-plt.savefig('../img/team-gaa-' + shortNameMainTeam, bbox_inches='tight')
+if os.path.exists('../img/team-gaa-' + '-'.join(shortNameMainTeam.split(' '))):
+    os.remove('../img/team-gaa-' + '-'.join(shortNameMainTeam.split(' ')))
+plt.savefig('../img/team-gaa-' + '-'.join(shortNameMainTeam.split(' ')), bbox_inches='tight', dpi=300)
 
 #

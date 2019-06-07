@@ -26,11 +26,11 @@ for index, goalType in enumerate(goalsDF['secondaryType'].unique()):
                   kind='kde', color='r', xlim=(-100,100), ylim=(-42.5,42.5),
                   height=11.7)
     ax.set_axis_labels('x coordinate', 'y coordinate')
-    ax.fig.suptitle('Jointplot of location of goals scored of type: ' + str(goalType),
+    ax.fig.suptitle('Jointplot of location of goals scored of type: ' + str(goalType).lower(),
                     x='0.5', y='1.0', fontsize='16')
 
     checkAndMakeImgFolder(jointplot=True)
 
     if os.path.exists('../img/joinplots/jointplot-' + '-'.join(goalType.lower().split(' ')) + '-joinplots.png'):
         os.remove('../img/joinplots/jointplot-' + '-'.join(goalType.lower().split(' ')) + '-joinplots.png')
-    plt.savefig('../img/joinplots/jointplot-' + '-'.join(goalType.lower().split(' ')) + '-joinplots.png', bbox_inches='tight')
+    plt.savefig('../img/joinplots/jointplot-' + '-'.join(goalType.lower().split(' ')) + '-joinplots.png', bbox_inches='tight', dpi=300)

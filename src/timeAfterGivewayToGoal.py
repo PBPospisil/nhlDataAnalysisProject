@@ -63,14 +63,14 @@ plt.figure(figsize=(12, 9))
 ax = sns.distplot(a=timeDifferencesList, hist=True, kde=True,
                   color='darkblue', hist_kws={'edgecolor':'black'},
                   kde_kws={'linewidth': 4})
-plt.xlabel('Time (min)')
-plt.ylabel('Density')
-plt.title('Density Plot and Histogram of time to score after giveaway')
+plt.xlabel('tsime (min)')
+plt.ylabel('density')
+plt.title('Density plot and histogram of time to score after giveaway')
 
 checkAndMakeImgFolder()
 
 if os.path.exists('../img/density-plot-time-to-score-after-giveaway.png'):
     os.remove('../img/density-plot-time-to-score-after-giveaway.png')
-plt.savefig('../img/density-plot-time-to-score-after-giveaway.png', bbox_inches='tight')
+plt.savefig('../img/density-plot-time-to-score-after-giveaway.png', bbox_inches='tight', dpi=300)
 
 #

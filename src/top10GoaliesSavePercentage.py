@@ -8,10 +8,9 @@ from collections import defaultdict
 import seaborn as sns; sns.set()
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-from get_goalie_to_subtractGAA_from_csv import extractFromCsv
 
 
-playerInfo = csvToDF("../data/playerInfo.csv")
+playerInfo = csvToDF("../data/player_info.csv")
 goalieStatsDF = csvToDF('../data/game_goalie_stats.csv')
 
 goalieStatsDF.loc[:,'game_id'] = goalieStatsDF.game_id.astype(np.int)
@@ -39,7 +38,7 @@ accumSV = []
 
 for player in sortedByTOI['player_id'][:10]:
     player = str(int(sortedByTOI.iloc[top10,0]))
-    playerStats = goalieStatsDF.loc[goalieStatsDF['player_id'] == player]
+    playerStats = goalieStatsDF.loc[goalieStatsDF['player_id'] == player].copy()
     playerStats.loc[:,'shots'] = playerStats.shots.astype(np.float)
     playerStats.loc[:,'saves'] = playerStats.saves.astype(np.float)
 
@@ -61,18 +60,19 @@ topTenToiWithAccumSvPercentage.columns = ['player_id']
 topTenToiWithAccumSvPercentage['timeOnIce'] = accumTOI
 topTenToiWithAccumSvPercentage['savePercentage'] = accumSV
 
+plt.figure(figsize=(12, 9))
 for player in topTenToiWithAccumSvPercentage['player_id'].unique():
     name = playerInfo.loc[playerInfo['player_id'] == player, 'firstName'].item()+ ' ' + playerInfo.loc[playerInfo['player_id'] == player, 'lastName'].item()
     plt.plot('timeOnIce', 'savePercentage', data=topTenToiWithAccumSvPercentage.loc[topTenToiWithAccumSvPercentage['player_id'] == player], label=name)
     plt.ylim(0.88,0.95)
 
-plt.xlabel('per 60 minutes')
-plt.ylabel('Save Percentage')
-plt.title('Save Percentage over Dataset for Top 10 player goaltenders from 2012-2017')
+plt.xlabel('time played')
+plt.ylabel('save percentage')
+plt.title('Save percentage over dataset for top 10 player goaltenders from 2010-2019')
 plt.legend()
 
 checkAndMakeImgFolder()
 
 if os.path.exists('../img/lineplot-goalies-top10-minutes-save-percentage.png'):
     os.remove('../img/lineplot-goalies-top10-minutes-save-percentage.png')
-plt.savefig('../img/lineplot-goalies-top10-minutes-save-percentage.png', bbox_inches='tight')
+plt.savefig('../img/lineplot-goalies-top10-minutes-save-percentage.png', bbox_inches='tight', dpi=300)

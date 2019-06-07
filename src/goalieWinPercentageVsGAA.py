@@ -89,8 +89,8 @@ oneSeasonEntire = oneSeasonEntire.drop(oneSeasonEntire.loc[oneSeasonEntire['game
 oneSeasonEntire = oneSeasonEntire.reset_index(drop=True)
 
 plt.figure(figsize=(12, 9))
-plt.title('Win% vs. GAA for goalies with >60 GP from 2013-2017')
-plt.annotate('Correlation coefficient: ' + str(oneSeasonEntire['GAA'].corr(oneSeasonEntire['winPercentage'])), xy=(0.65, 0.95), xycoords='axes fraction')
+plt.title('Win% vs. GAA for goalies with > 60 GP from 2010-2019')
+plt.annotate('Correlation coefficient: ' + ('{0:.' + str(3) + 'f}').format(str(oneSeasonEntire['GAA'].corr(oneSeasonEntire['winPercentage']))), xy=(0.65, 0.95), xycoords='axes fraction')
 ax = sns.regplot(x="GAA", y="winPercentage", data=oneSeasonEntire)
 plt.xlabel('GAA')
 plt.ylabel("win percentage")
@@ -100,4 +100,4 @@ checkAndMakeImgFolder()
 
 if os.path.exists('../img/gaa-win-percentage-replot.png'):
     os.remove('../img/gaa-win-percentage-replot.png')
-plt.savefig('../img/gaa-win-percentage-replot.png', bbox_inches='tight')
+plt.savefig('../img/gaa-win-percentage-replot.png', bbox_inches='tight', dpi=300)

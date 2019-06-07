@@ -27,9 +27,9 @@ keys = np.array(list(eventAfterGiveawayCount.keys()))
 vals = np.array(list(eventAfterGiveawayCount.values())).astype(float)
 
 plt.figure(figsize=(12, 9))
-plt.xlabel('Type of play')
-plt.ylabel('Count')
-plt.title('Barplot of the next play after a Giveaway')
+plt.xlabel('type of play')
+plt.ylabel('count')
+plt.title('Barplot of the next play after a giveaway')
 
 ax = sns.barplot(x=keys[:11], y=vals[:11])
 
@@ -37,4 +37,4 @@ checkAndMakeImgFolder()
 
 if os.path.exists('../img/barplot-next-play-after-giveaway.png'):
     os.remove('../img/barplot-next-play-after-giveaway.png')
-plt.savefig('../img/barplot-next-play-after-giveaway.png', bbox_inches='tight')
+plt.savefig('../img/barplot-next-play-after-giveaway.png', bbox_inches='tight', dpi=300)

@@ -16,18 +16,25 @@ from matplotlib import animation
 
 playsAfterGiveawayDF = csvToDF('../data/extractGoalsWithGA.csv')
 
+csvfileFile = open('../data/goalsAfterGA.csv'); csvReader = csv.reader(csvfileFile)
+
+playsAfterGiveawayDF.columns = list(csvReader)[0]
+
+playsAfterGiveawayDF = playsAfterGiveawayDF.drop(playsAfterGiveawayDF.loc[playsAfterGiveawayDF['x'] == 'NA'].index)
+playsAfterGiveawayDF = playsAfterGiveawayDF.drop(playsAfterGiveawayDF.loc[playsAfterGiveawayDF['x'] == 'x'].index)
+
 playsAfterGiveawayDF.loc[:,'x'] = playsAfterGiveawayDF.x.astype(np.int)
 playsAfterGiveawayDF.loc[:,'y'] = playsAfterGiveawayDF.y.astype(np.int)
-playsAfterGiveawayDF.loc[:,'x_'] = playsAfterGiveawayDF.x_.astype(np.int)
-playsAfterGiveawayDF.loc[:,'y_'] = playsAfterGiveawayDF.y_.astype(np.int)
-playsAfterGiveawayDF.loc[:,'period_time'] = playsAfterGiveawayDF.period_time.astype(np.int)
+playsAfterGiveawayDF.loc[:,'st_x'] = playsAfterGiveawayDF.st_x.astype(np.int)
+playsAfterGiveawayDF.loc[:,'st_y'] = playsAfterGiveawayDF.st_y.astype(np.int)
+playsAfterGiveawayDF.loc[:,'periodTime'] = playsAfterGiveawayDF.periodTime.astype(np.int)
 
-playsAfterGiveawayOnlyGoalsDF = playsAfterGiveawayDF.loc[playsAfterGiveawayDF['5'] == 'Goal']
+playsAfterGiveawayOnlyGoalsDF = playsAfterGiveawayDF.loc[playsAfterGiveawayDF['event'] == 'Goal'].copy()
 
 distanceFromGA = []
 timeFromGA = []
 
-for index, _ in enumerate(playsAfterGiveawayDF['0']):
+for index, _ in enumerate(playsAfterGiveawayDF['play_id']):
     if playsAfterGiveawayDF.iloc[index, 5] == 'Goal':
         distanceFromGiveawayToNet = math.sqrt((-100 - playsAfterGiveawayDF.iloc[index-1, 17])**2 + (playsAfterGiveawayDF.iloc[index-1, 18])**2)
         distanceFromGA += [distanceFromGiveawayToNet]
@@ -37,7 +44,6 @@ for index, _ in enumerate(playsAfterGiveawayDF['0']):
         else:
             timediff = 0
         timeFromGA += [timediff]
-
 
 playsAfterGiveawayOnlyGoalsDF['distance_to_goal'] = distanceFromGA
 playsAfterGiveawayOnlyGoalsDF['time_from_ga'] = timeFromGA
@@ -61,7 +67,7 @@ for index, time in enumerate(sortedByTimeDistance['time_from_ga']):
     while(distance > j):
         j += 10
     if j == 10:
-        timeDistancePermutationsRounded[' '.join([str(time), str(0)])] = 0
+        timeDistancePermutationsRounded[' '.join([str(time), '0'])] = 0
     timeDistancePermutationsRounded[' '.join([str(round(time)), str(round(j))])] += 1
 
 i = 0
@@ -71,16 +77,7 @@ for key in timeDistancePermutationsRounded.keys():
     yValues += [round(float(distance))]
     zValues += [timeDistancePermutationsRounded[key]]
 
-topPercentage = 0
-for key in sorted(timeDistancePermutationsRounded, key=timeDistancePermutationsRounded.get, reverse=True):
-    if i < 20:
-        topPercentage += timeDistancePermutationsRounded[key]/len(playsAfterGiveawayOnlyGoalsDF['0'])
-        print(key, timeDistancePermutationsRounded[key], timeDistancePermutationsRounded[key]/len(playsAfterGiveawayOnlyGoalsDF['0']))
-    i += 1
-
-print(topPercentage, len(timeDistancePermutationsRounded.keys()))
-
-fig = plt.figure()
+fig = plt.figure(dpi=300)
 ax = fig.gca(projection='3d')
 writer = animation.FFMpegFileWriter()
 
@@ -92,10 +89,9 @@ def animate(i):
     ax.view_init(elev=10., azim=i)
     return fig,
 
-plt.figure(figsize=(12, 9))
-plt.xlabel('Time')
-plt.ylabel('Distance')
-plt.title('Time and Distance count for goals < 60 sec after GA')
+plt.xlabel('time')
+plt.ylabel('distance')
+plt.title('Time and distance distribution for goals scored < 60 sec after giveaway')
 
 # Animate
 anim = animation.FuncAnimation(fig, animate, init_func=init,

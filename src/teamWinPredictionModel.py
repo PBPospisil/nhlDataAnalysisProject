@@ -128,7 +128,7 @@ def teamPredictionLinePlot(goalieStatsDF, teamStatsDF, teamOfInterest, beta_, al
     return winPredictionDF
 
 
-teamInfo = csvToDF('../data/teamInfo.')
+team_info = csvToDF('../data/team_info.csv')
 goalieStatsDF = csvToDF('../data/game_goalie_stats.csv')
 gameDF = csvToDF('../data/game.csv')
 teamStatsDF = csvToDF('../data/game_teams_stats.csv')
@@ -277,8 +277,8 @@ while (1):
     userChoice = userInterfaceOptions()
     if userChoice == '1':
         print('\n\nTeam --- ID\n')
-        for index, team in enumerate(teamInfo['team_id']):
-            print(teamInfo.iloc[index,2] + ' ' + teamInfo.iloc[index,3] + ' --- ' + team)
+        for index, team in enumerate(team_info['team_id']):
+            print(team_info.iloc[index,2] + ' ' + team_info.iloc[index,3] + ' --- ' + team)
 
         mainTeam = str(input('\nEnter the team ID to view a specific team chart (q to quit): '))
         if mainTeam == 'q':
@@ -287,11 +287,11 @@ while (1):
         elif not mainTeam.isnumeric() or int(mainTeam) < 1 or int(mainTeam) > 53:
             print('Input is not a number in the proper range.')
             continue
-        if mainTeam not in teamInfo['team_id'].unique():
+        if mainTeam not in team_info['team_id'].unique():
             print('Input is not a team id.')
             continue
-        shortNameMainTeam = teamInfo.loc[teamInfo['team_id'] == mainTeam, 'shortName'].item()
-        teamNameMainTeam = teamInfo.loc[teamInfo['team_id'] == mainTeam, 'teamName'].item()
+        shortNameMainTeam = team_info.loc[team_info['team_id'] == mainTeam, 'shortName'].item()
+        teamNameMainTeam = team_info.loc[team_info['team_id'] == mainTeam, 'teamName'].item()
 
         teamOfInterest = int(mainTeam)
 
@@ -308,22 +308,22 @@ while (1):
         line4 = plt.plot(winPredictionDF['game_id'], winPredictionDF['error'], label='Prediction Error', linestyle=':')
 
         plt.legend()
-        plt.xlabel('Game')
-        plt.ylabel('Win Prediction')
+        plt.xlabel('game')
+        plt.ylabel('win prediction')
         plt.title('Predicted win %, actual win %, of the ' + shortNameMainTeam + ' ' + teamNameMainTeam + ' in the 2017-2018 season')
         figureName = '../img/win-prediction-winpercentage-error.png'
     elif userChoice == '2':
         ax = sns.regplot(x='winPred', y='winPercentage', data=oneSeasonEntire)
-        plt.xlabel('Win Prediction')
-        plt.ylabel('Win Percentage')
+        plt.xlabel('win prediction')
+        plt.ylabel('win percentage')
         plt.title('Win percentage vs. win prediction of each season for every team 2012-2018')
         figureName = '../img/win-prediction-winpercentage-regplot.png'
 
     elif userChoice == '3':
         ax = sns.scatterplot(x='winPred', y='winPercentage', data=oneSeasonEntire)
-        plt.xlabel('Win Prediction')
-        plt.ylabel('Win Percentage')
-        plt.title('Win percentage vs. win prediction of each season for every team 2012-2018')
+        plt.xlabel('win prediction')
+        plt.ylabel('win percentage')
+        plt.title('Win percentage vs. win prediction of each season for every team 2010-2019')
         figureName = '../img/win-prediction-winpercentage-scatterplot.png'
 
     elif userChoice == 'q':
@@ -336,6 +336,6 @@ while (1):
 
     if os.path.exists(figureName):
         os.remove(figureName)
-    plt.savefig(figureName, bbox_inches='tight')
+    plt.savefig(figureName, bbox_inches='tight', dpi=300)
 
 #
