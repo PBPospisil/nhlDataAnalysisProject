@@ -47,7 +47,7 @@ def filterCsvForGoalsAfterGA(csvfile):
                 csv_df = csv_df.drop(csv_df.index[0])
                 isFirstPage = False
 
-            csv_df.to_csv('../data/goalsAfterGA.csv', index=False, sep=',', encoding='utf-8', mode='a')
+            csv_df.to_csv('../data/goals_after_giveaway.csv', index=False, sep=',', encoding='utf-8', mode='a')
             csv_arr = []
 
             j += 1
@@ -132,8 +132,8 @@ if not os.path.isdir('../data'):
 
 print('\nMaking subset 1/3...\n')
 
-if os.path.exists('../data/goalsAfterGA.csv'):
-    os.remove('../data/goalsAfterGA.csv')
+if os.path.exists('../data/goals_after_giveaway.csv'):
+    os.remove('../data/goals_after_giveaway.csv')
 filterCsvForGoalsAfterGA('../../../game_plays.csv')
 
 print('\nMaking subset 2/3...\n')
