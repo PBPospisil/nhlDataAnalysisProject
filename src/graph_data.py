@@ -2,8 +2,8 @@ import os
 import pandas
 import numpy as np
 import csv
-from csvToDF import csvToDF
-from csvToDF import checkAndMakeImgFolder
+from csv_to_df import csv_to_df
+from csv_to_df import check_and_make_img_folder
 from collections import defaultdict
 import matplotlib.pyplot as plt
 from scipy.stats import norm
@@ -56,7 +56,7 @@ class GraphData(object):
                                   'rink_side':'str'}
 
     def import_csv(self, csv_name):
-        return csvToDF(csv_name)
+        return csv_to_df(csv_name)
 
     def drop_na_row(self, dataframe):
         for column in dataframe.columns.values[17:19]:

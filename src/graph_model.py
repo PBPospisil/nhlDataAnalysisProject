@@ -2,8 +2,8 @@ import os
 import pandas
 import numpy as np
 import csv
-from csvToDF import csvToDF
-from csvToDF import checkAndMakeImgFolder
+from csv_to_df import csv_to_df
+from csv_to_df import check_and_make_img_folder
 from collections import defaultdict
 import matplotlib.pyplot as plt
 from scipy.stats import norm
@@ -275,7 +275,7 @@ class GraphModel(GraphData):
         self.check_dir_and_save(fig3, '../img/win-prediction-winpercentage-scatterplot.png')
 
     def check_dir_and_save(cls, fig, figure_name):
-        checkAndMakeImgFolder()
+        check_and_make_img_folder()
         if os.path.exists(figure_name):
             os.remove(figure_name)
         fig.savefig(figure_name, bbox_inches='tight', dpi=300)

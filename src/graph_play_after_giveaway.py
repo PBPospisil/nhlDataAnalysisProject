@@ -4,8 +4,8 @@ import numpy as np
 import csv
 import seaborn as sns
 import matplotlib.pyplot as plt
-from csvToDF import csvToDF
-from csvToDF import checkAndMakeImgFolder
+from csv_to_df import csv_to_df
+from csv_to_df import check_and_make_img_folder
 from collections import defaultdict
 from graph_data import GraphData
 
@@ -37,7 +37,7 @@ class GraphPlayAfterGiveaway(GraphData):
                     y=np.array(list(event_after_giveaway_count.values())).astype(float)[:11])
 
     def save_plot(self, plot_file_name):
-        checkAndMakeImgFolder()
+        check_and_make_img_folder()
         if os.path.exists(plot_file_name):
             os.remove(plot_file_name)
         plt.savefig(plot_file_name, bbox_inches='tight', dpi=300)

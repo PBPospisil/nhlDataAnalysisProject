@@ -2,8 +2,8 @@ import os
 import pandas
 import numpy as np
 import csv
-from csvToDF import csvToDF
-from csvToDF import checkAndMakeImgFolder
+from csv_to_df import csv_to_df
+from csv_to_df import check_and_make_img_folder
 from collections import defaultdict
 import matplotlib.pyplot as plt
 from scipy.stats import norm
@@ -28,7 +28,7 @@ class GraphTeamStats(GraphModel):
         plt.xlabel('GAA'); plt.ylabel("win percentage")
 
     def save_plot(self):
-        checkAndMakeImgFolder()
+        check_and_make_img_folder()
         if os.path.exists('../img/gaa-win-percentage-regplot.png'):
             os.remove('../img/gaa-win-percentage-regplot.png')
         plt.savefig('../img/gaa-win-percentage-regplot.png', bbox_inches='tight', dpi=300)

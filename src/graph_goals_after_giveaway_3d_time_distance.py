@@ -2,8 +2,8 @@ import os
 import pandas
 import numpy as np
 import csv
-from csvToDF import csvToDF
-from csvToDF import checkAndMakeImgFolder
+from csv_to_df import csv_to_df
+from csv_to_df import check_and_make_img_folder
 from collections import defaultdict
 import matplotlib.pyplot as plt
 plt.rcParams['animation.ffmpeg_path'] = '/usr/local/bin/ffmpeg'
@@ -112,7 +112,7 @@ class GraphTimeDistanceGiveawayGoalsTrisurface(GraphGiveawayGoals):
                                        frames=360, interval=20, blit=True)
 
     def save_plot(self, plot_file_name):
-        checkAndMakeImgFolder()
+        check_and_make_img_folder()
         if os.path.exists(plot_file_name):
             os.remove(plot_file_name)
         self.anim.save(plot_file_name, writer=self.writer)

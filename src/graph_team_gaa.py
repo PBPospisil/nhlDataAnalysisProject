@@ -2,8 +2,8 @@ import os
 import pandas
 import numpy as np
 import csv
-from csvToDF import csvToDF
-from csvToDF import checkAndMakeImgFolder
+from csv_to_df import csv_to_df
+from csv_to_df import check_and_make_img_folder
 from collections import defaultdict
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -95,7 +95,7 @@ class GraphTeamGaa(GraphData):
         plt.title('GAA vs. time with focus on ' + self.short_name_main_team + ' ' + self.team_name_main_team + ' from 2010-2019')
 
     def save_plot(self):
-        checkAndMakeImgFolder()
+        check_and_make_img_folder()
         if os.path.exists('../img/team-gaa-' + '-'.join(self.short_name_main_team.split(' ')) + '.png'):
             os.remove('../img/team-gaa-' + '-'.join(self.short_name_main_team.split(' ')) + '.png')
         plt.savefig('../img/team-gaa-' + '-'.join(self.short_name_main_team.split(' ')) + '.png', bbox_inches='tight', dpi=300)
