@@ -17,11 +17,11 @@ Download the Kaggle Dataset here: [NHL Game Data](https://www.kaggle.com/martine
 
 
 ### Play after a Giveaway
-<img src=![barplot-next-play-after-giveaway](https://user-images.githubusercontent.com/21959159/60748876-770bb700-9f4f-11e9-8150-0f58b4e35c35.png =250x) alt='bar-giveaway' width='200' />
+<img src='https://user-images.githubusercontent.com/21959159/60748876-770bb700-9f4f-11e9-8150-0f58b4e35c35.png' alt='bar-giveaway' width='200'/>
 ### Converted Giveaways
 Trisurface plot of the number of converted GAs under 10 seconds by distance from GA to net and time
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/21959159/58520036-3ca24380-8173-11e9-8646-6cd7a36ec1a7.gif">
+  <img src='https://user-images.githubusercontent.com/21959159/58520036-3ca24380-8173-11e9-8646-6cd7a36ec1a7.gif'>
 </p>
 
 ![barplot-goal-type-after-GA-under10sec](https://user-images.githubusercontent.com/21959159/58521117-87728a00-8178-11e9-85fe-a43a18417b36.png)
