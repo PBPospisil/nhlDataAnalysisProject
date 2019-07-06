@@ -20,6 +20,7 @@ Download the Kaggle Dataset here: [NHL Game Data](https://www.kaggle.com/martine
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/60749022-4dec2600-9f51-11e9-9166-b688f69e0bd6.png' alt='gaa-sv%' width='600'/>
 </p>
+
 ### Play after a Giveaway
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/60748876-770bb700-9f4f-11e9-8150-0f58b4e35c35.png' alt='bar-giveaway' width='600'/>
