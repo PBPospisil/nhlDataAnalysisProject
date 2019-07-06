@@ -17,8 +17,7 @@ Download the Kaggle Dataset here: [NHL Game Data](https://www.kaggle.com/martine
 
 
 ### Play after a Giveaway
-![barplot-play-after-GA](https://user-images.githubusercontent.com/21959159/58521134-a2dd9500-8178-11e9-99cb-39153086251b.png)
-
+![barplot-next-play-after-giveaway](https://user-images.githubusercontent.com/21959159/60748876-770bb700-9f4f-11e9-8150-0f58b4e35c35.png)
 ### Converted Giveaways
 Trisurface plot of the number of converted GAs under 10 seconds by distance from GA to net and time
 <p align="center">
