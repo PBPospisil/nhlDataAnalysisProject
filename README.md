@@ -1,6 +1,10 @@
 # Data Visualization and Model Testing on 'NHL Game Data' 
 
-Data analysis of the 'NHL Game Data', the dataset from kaggle and contributed by Martin Ellis. This project contains a series of scripts to filter data for processing and visualization. Spanning 6 years and containing rich detail for every play such as location on the ice and secondary play type, this data set motivated an effort to analyze NHL data and reveal new insights and characterize known tendencies. 
+Data analysis of the 'NHL Game Data', the dataset from kaggle and contributed by Martin Ellis. This project contains a series of scripts to clean and process data for visualization. Containing unique data features including details for every play such as location on the ice and secondary play type, this data set motivated an effort to analyze NHL data and reveal new insights and characterize known tendencies. 
+
+From the beginning, the main goal of this project has been to gain more experience with data analysis tools in python, specifically the matplotlib and seaborn libraries for visualization. In order to spend more time on visulization and expedite the process leading upto visualization, cleaning and processing pipelines were developed using an object-oriented paradigm. Therefore, the images made result from the declaration of a graphing object and calling a few methods on the object according to the specification of the intended image.
+
+Further improvements upon the graphing class objects will include detailed customization of graph style and user-defined data profiles for graphing.
 
 
 ## Getting Started
@@ -15,7 +19,7 @@ conda 4.5.12
 Download the Kaggle Dataset here: [NHL Game Data](https://www.kaggle.com/martinellis/nhl-game-data)
 
 ## Predicting Win Percentage
-
+Another goal of this project was to investigate the power of certain indicators to predict win percentage and to illustrate strength of prediction using the developed graphing object library.
 ### Goals Against Average as a predictor
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/60749022-4dec2600-9f51-11e9-9166-b688f69e0bd6.png' alt='gaa-sv%' width='600'/>
