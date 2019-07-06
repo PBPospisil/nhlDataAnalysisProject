@@ -24,7 +24,7 @@ Download the Kaggle Dataset here: [NHL Game Data](https://www.kaggle.com/martine
 ```
 make subsets
 ```
-which declares and object of the MakeSubsets class. This class contains methods that condense the game_plays.csv file in order to decrease processing time upon further use. The scripts that use this csv require only a subset of this data file. 
+which declares an object of the MakeSubsets class. This class contains methods that condense the game_plays.csv file in order to decrease processing time upon further use. The scripts that use this csv require only a subset of this data file. 
 
 ## Predicting Win Percentage
 Another goal of this project was to investigate the power of certain indicators to predict win percentage and to illustrate strength of prediction using the developed graphing object library.
