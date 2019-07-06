@@ -20,8 +20,7 @@ Download the respository, cd to src and use the makefile command:
 ```
 make data
 ```
-Download the Kaggle Dataset here: [NHL Game Data](https://www.kaggle.com/martinellis/nhl-game-data), to the data folder
-Unzip the archive, then use the included makefile command:
+Download the Kaggle Dataset here: [NHL Game Data](https://www.kaggle.com/martinellis/nhl-game-data). Move to the data folder, unzip the archive, then use the included makefile command:
 ```
 make subsets
 ```
