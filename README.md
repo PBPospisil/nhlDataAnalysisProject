@@ -1,6 +1,6 @@
 # Data Visualization and Model Testing on 'NHL Game Data' 
 
-Data analysis of the 'NHL Game Data', the dataset from kaggle and contributed by Martin Ellis. This project contains a series of scripts to clean and process data for visualization. Containing unique data features including details for every play such as location on the ice and secondary play type, this data set motivated an effort to analyze NHL data and reveal new insights and characterize known tendencies. 
+Data analysis of the 'NHL Game Data', the dataset from kaggle and contributed by Martin Ellis. This project contains a series of scripts to clean and process data for visualization. Containing unique data features including details for every play such as location on the ice and secondary play type, this data set motivated an effort to analyze NHL data and reveal new insights and explore known tendencies. 
 
 From the beginning, the main goal of this project has been to gain more experience with data analysis tools in python, specifically the matplotlib and seaborn libraries for visualization. In order to spend more time on visulization and expedite the process leading upto visualization, cleaning and processing pipelines were developed using an object-oriented paradigm. Therefore, the images made result from the declaration of a graphing object and calling a few methods on the object according to the specification of the intended image.
 
@@ -16,7 +16,16 @@ Python 3
 conda 4.5.12
 ```
 ## Running Scripts
-Download the Kaggle Dataset here: [NHL Game Data](https://www.kaggle.com/martinellis/nhl-game-data)
+Download the respository, cd to src and use the makefile command:
+```
+make data
+```
+Download the Kaggle Dataset here: [NHL Game Data](https://www.kaggle.com/martinellis/nhl-game-data), to the data folder
+Unzip the archive, then use the included makefile command:
+```
+make subsets
+```
+which declares and object of the MakeSubsets class. This class contains methods that condense the game_plays.csv file in order to decrease processing time upon further use. The scripts that use this csv require only a subset of this data file. 
 
 ## Predicting Win Percentage
 Another goal of this project was to investigate the power of certain indicators to predict win percentage and to illustrate strength of prediction using the developed graphing object library.
