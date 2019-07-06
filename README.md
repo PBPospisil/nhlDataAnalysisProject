@@ -28,7 +28,7 @@ Download the Kaggle Dataset here: [NHL Game Data](https://www.kaggle.com/martine
 ### Converted Giveaways
 Trisurface plot of the number of converted GAs under 10 seconds by distance from GA to net and time
 <p align='center'>
-  <img src='https://user-images.githubusercontent.com/21959159/58520036-3ca24380-8173-11e9-8646-6cd7a36ec1a7.gif' width='600'>
+  <img src='https://user-images.githubusercontent.com/21959159/58520036-3ca24380-8173-11e9-8646-6cd7a36ec1a7.gif'                    width='600'/>
 </p>
 
 ![barplot-goal-type-after-GA-under10sec](https://user-images.githubusercontent.com/21959159/58521117-87728a00-8178-11e9-85fe-a43a18417b36.png)
