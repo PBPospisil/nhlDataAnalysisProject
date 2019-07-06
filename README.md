@@ -15,7 +15,7 @@ All of the needed libraries are contained in the latest anaconda distribution.
 Python 3
 conda 4.5.12
 ```
-## Running Scripts
+### Setting up the Environment
 Download the respository, cd to src and use the makefile command:
 ```
 make data
