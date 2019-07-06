@@ -27,7 +27,7 @@ make subsets
 which declares an object of the MakeSubsets class. This class contains methods that condense the game_plays.csv file in order to decrease processing time upon further use. The scripts that use this csv require only a subset of this data file. 
 
 ## Predicting Win Percentage
-Another goal of this project was to investigate the power of certain indicators to predict win percentage and to illustrate strength of prediction using the developed graphing object library.
+Another goal of this project was to investigate the power of certain indicators to predict win percentage and to illustrate strength of prediction using the developed graphing library.
 ### Goals Against Average as a predictor
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/60749022-4dec2600-9f51-11e9-9166-b688f69e0bd6.png' alt='gaa-sv%' width='600'/>
