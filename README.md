@@ -56,7 +56,9 @@ Goals Against Average (GAA) is shown here to have a weak correlation with Goalte
 The main functionality of the ```GraphModel()``` class is to support easy development of various prediction methods and visualization functions.
 
 #### Goals For (GF) Goals Against (GA)
-The ratio of GF to GA is often used as the basis for a linear model. After some experimentation, it was found that \\[ \frac{GF}{GA} + PP%*PK% ] correlated highly with TWP.
+The ratio of GF to GA is often used as the basis for a linear model. After some experimentation, it was found that
+<p align='center'>![equation](https://latex.codecogs.com/svg.latex?%5Cbg_black%20%28GF/GA%29&plus;%28PP*PK%29)</p>
+correlated highly with TWP.
 
 
 ## Giveaways
