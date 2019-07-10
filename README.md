@@ -29,10 +29,13 @@ which declares an object of the MakeSubsets class. This class contains methods t
 ## Predicting Win Percentage
 Another goal of this project was to investigate the power of certain indicators to predict win percentage and to illustrate strength of prediction using the developed graphing library.
 ### Goals Against Average as a predictor
+#### Goaltender Win Percentage
 <p align='center'>
-  <img src='https://user-images.githubusercontent.com/21959159/60957127-5a5ddf00-a2c1-11e9-93a9-caae0e07dcad.png' alt='gaa-win%-goalies' width='600'/>
+  <img src='https://user-images.githubusercontent.com/21959159/60957127-5a5ddf00-a2c1-11e9-93a9-caae0e07dcad.png' alt='gaa-win%-goaltender' width='600'/>
 </p>
+Goals Against Average (GAA) is shown here to have a weak correlation with goaltender win percentage. One reason for this is that goals are complex events that are influenced by other players including a goaltender's teammate(s); because of this GAA is stronger predictor for Team Win Percentage.
 
+#### Team Win Percentage
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/60953113-c3d9ef80-a2b9-11e9-8f0b-f400234da641.png' alt='gaa-win%-teams' width='580'/>
 </p>
