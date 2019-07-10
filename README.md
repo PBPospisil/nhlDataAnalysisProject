@@ -54,7 +54,7 @@ Goals Against Average (GAA) is shown here to have a weak correlation with Goalte
 
 ### Play after a Giveaway
 <p align='center'>
-  <img src='https://user-images.githubusercontent.com/21959159/60748876-770bb700-9f4f-11e9-8150-0f58b4e35c35.png' alt='bar-giveaway' width='600'/>
+  <img src='https://user-images.githubusercontent.com/21959159/61005094-bad23800-a324-11e9-9add-55ac5d469e81.png' alt='bar-giveaway' width='600'/>
 </p>
 
 ### Converted Giveaways
