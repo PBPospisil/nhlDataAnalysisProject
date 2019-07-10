@@ -40,7 +40,6 @@ The class ```GraphGoalieStats()```, takes keyword arguments ```mode``` and ```fi
 #### Goaltender Win Percentage
 ```mode```: accepts 'GAA' or 'savePercentage'
 
-
 ```figure_name```: string-type file name of figure
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/60957127-5a5ddf00-a2c1-11e9-93a9-caae0e07dcad.png' alt='gaa-win%-goaltender' width='600'/>
@@ -58,7 +57,7 @@ The main functionality of the ```GraphModel()``` class is to support easy develo
 #### Goals For (GF) Goals Against (GA)
 The ratio of GF to GA is often used as the basis for a linear model. After some experimentation, it was found that
 
-![equation](https://latex.codecogs.com/svg.latex%5Cbg_black%20%28GF/GA%29&plus;%28PP*PK%29?style=centerme
+![Image](https://latex.codecogs.com/svg.latex?%5Cbg_black%20%28GF/GA%29&plus;%28PP*PK%29)
 
 correlated highly with TWP.
 
