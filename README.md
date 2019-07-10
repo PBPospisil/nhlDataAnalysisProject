@@ -38,10 +38,9 @@ Another goal of this project was to investigate the power of certain indicators 
 The class ```GraphGoalieStats()```, takes keyword arguments ```mode``` and ```figure_name``` and ```GraphTeamStats()```takes no keyword args., but like ```GraphGoalieStats()```, ```GraphTeamStats()``` inherits much of its functionality from the ```GraphModel()``` class.
 
 #### Goaltender Win Percentage
-
-<p>```mode```: accepts 'GAA' or 'savePercentage'</p>
-<p>```figure_name```: string-type file name of figure</p>
-
+```mode```: accepts 'GAA' or 'savePercentage'
+<p></p>
+```figure_name```: string-type file name of figure
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/60957127-5a5ddf00-a2c1-11e9-93a9-caae0e07dcad.png' alt='gaa-win%-goaltender' width='600'/>
 </p>
