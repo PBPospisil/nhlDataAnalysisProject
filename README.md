@@ -57,7 +57,7 @@ The main functionality of the ```GraphModel()``` class is to support easy develo
 #### Goals For (GF) Goals Against (GA)
 The ratio of GF to GA is often used as the basis for a linear model. After some experimentation, it was found that
 
-![Image](https://latex.codecogs.com/svg.latex?%5Cbg_black%20%28GF/GA%29&plus;%28PP*PK%29){align='center}
+![Image](https://latex.codecogs.com/svg.latex?%5Cbg_black%20%5Cfrac%7BGF%7D%7BGA%7D&plus;PP%5Ccdot%20PK){align='center'}
 
 correlated highly with TWP.
 
