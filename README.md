@@ -27,7 +27,7 @@ make subsets
 which declares an object of the ```MakeSubsets()``` class. This class contains methods that condense the game_plays.csv file in order to decrease processing time upon further use. The scripts that use this csv require only a subset of this data file. 
 
 ### Graph Data
-The base class for this library is ```GraphData()```, which holds general graphing data like column data types. The member functions for ```GraphData()``` currently imports a csv to dataframe, and another cleans missing rows.  
+The base class for this library is ```GraphData()```, which holds general graphing data like column data types. The member functions for ```GraphData()``` currently imports a csv file to a dataframe, and another cleans missing rows.  
 
 ## Predicting Win Percentage
 
