@@ -42,7 +42,7 @@ The class ```GraphGoalieStats()```, takes keyword arguments ```mode``` and ```fi
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/60957127-5a5ddf00-a2c1-11e9-93a9-caae0e07dcad.png' alt='gaa-win%-goaltender' width='600'/>
 </p>
-__Goals Against Average (GAA)__ is shown here to have a weak correlation with __Goaltender Win Percentage__. One reason for this is that goals are complex events that are influenced by other players including a goaltender's teammate(s); because of this GAA is stronger predictor for __Team Win Percentage__.
+__ Goals Against Average (GAA) __ is shown here to have a weak correlation with __ Goaltender Win Percentage __. One reason for this is that goals are complex events that are influenced by other players including a goaltender's teammate(s); because of this GAA is stronger predictor for __ Team Win Percentage __.
 
 #### Team Win Percentage
 <p align='center'>
