@@ -36,7 +36,7 @@ Another goal of this project was to investigate the power of certain indicators 
 
 
 <p align='center'>
-  <img src='https://user-images.githubusercontent.com/21959159/60953113-c3d9ef80-a2b9-11e9-8f0b-f400234da641.png' alt='gaa-win%-teams' width='585'/>
+  <img src='https://user-images.githubusercontent.com/21959159/60953113-c3d9ef80-a2b9-11e9-8f0b-f400234da641.png' alt='gaa-win%-teams' width='580'/>
 </p>
 ### Play after a Giveaway
 <p align='center'>
