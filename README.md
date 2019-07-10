@@ -24,7 +24,7 @@ Download the Kaggle Dataset here: [NHL Game Data](https://www.kaggle.com/martine
 ```
 make subsets
 ```
-which declares an object of the MakeSubsets class. This class contains methods that condense the game_plays.csv file in order to decrease processing time upon further use. The scripts that use this csv require only a subset of this data file. 
+which declares an object of the ```MakeSubsets()``` class. This class contains methods that condense the game_plays.csv file in order to decrease processing time upon further use. The scripts that use this csv require only a subset of this data file. 
 
 ### Graph Data
 The base class for this library is ```GraphData()```, which holds general graphing data like column data types. The member functions for ```GraphData()``` currently imports a csv to dataframe, and another cleans missing rows.  
@@ -35,7 +35,7 @@ Another goal of this project was to investigate the power of certain indicators 
 
 ### Goals Against Average as a predictor
 
-The class ```GraphGoalieStats()``` which takes keyword arguments ```mode``` and ```figure_name```. ```GraphTeamStats()```takes no keyword args. but like ```GraphGoalieStats```, ```GraphTeamStats``` inherits much of its functionality from ```GraphModel```.
+The class ```GraphGoalieStats()```, takes keyword arguments ```mode``` and ```figure_name``` and ```GraphTeamStats()```takes no keyword args. but like ```GraphGoalieStats()```, ```GraphTeamStats()``` inherits much of its functionality from the class ```GraphModel()```.
 
 #### Goaltender Win Percentage
 
