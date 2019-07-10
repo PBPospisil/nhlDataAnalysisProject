@@ -26,10 +26,19 @@ make subsets
 ```
 which declares an object of the MakeSubsets class. This class contains methods that condense the game_plays.csv file in order to decrease processing time upon further use. The scripts that use this csv require only a subset of this data file. 
 
+### Graph Data
+The base class for this library is ```GraphData()```, which holds general graphing data like column data types. The member functions for ```GraphData()``` currently imports a csv to dataframe, and another cleans missing rows.  
+
 ## Predicting Win Percentage
+
 Another goal of this project was to investigate the power of certain indicators to predict win percentage and to illustrate strength of prediction using the developed graphing library.
+
 ### Goals Against Average as a predictor
+
+The class ```GraphGoalieStats()``` which takes keyword arguments ```mode``` and ```figure_name```. ```GraphTeamStats()```takes no keyword args. but like ```GraphGoalieStats```, ```GraphTeamStats``` inherits much of its functionality from ```GraphModel```.
+
 #### Goaltender Win Percentage
+
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/60957127-5a5ddf00-a2c1-11e9-93a9-caae0e07dcad.png' alt='gaa-win%-goaltender' width='600'/>
 </p>
