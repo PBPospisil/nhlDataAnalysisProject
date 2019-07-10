@@ -35,7 +35,7 @@ Another goal of this project was to investigate the power of certain indicators 
 
 ### Goals Against Average as a predictor
 
-The class ```GraphGoalieStats()```, takes keyword arguments ```mode``` and ```figure_name``` and ```GraphTeamStats()```takes no keyword args., but like ```GraphGoalieStats()```, ```GraphTeamStats()``` inherits much of its functionality from the class ```GraphModel()```.
+The class ```GraphGoalieStats()```, takes keyword arguments ```mode``` and ```figure_name``` and ```GraphTeamStats()```takes no keyword args., but like ```GraphGoalieStats()```, ```GraphTeamStats()``` inherits much of its functionality from the ```GraphModel()``` class.
 
 #### Goaltender Win Percentage
 
