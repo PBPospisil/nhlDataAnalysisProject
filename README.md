@@ -45,14 +45,28 @@ The class ```GraphGoalieStats()```, takes keyword arguments ```mode``` and ```fi
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/60957127-5a5ddf00-a2c1-11e9-93a9-caae0e07dcad.png' alt='gaa-win%-goaltender' width='600'/>
 </p>
-Goals Against Average (GAA) is shown here to have a weak correlation with Goaltender Win Percentage. One reason for this is that goals are complex events that are influenced by other players including a goaltender's teammate(s); because of this GAA is stronger predictor for Team Win Percentage.
+Goals Against Average (GAA) is shown here to have a weak correlation with Goaltender Win Percentage (GWP). One reason for this is that goals are complex events that are influenced by other players including a goaltender's teammate(s); because of this GAA is stronger predictor for Team Win Percentage (TWP).
 
 #### Team Win Percentage
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/60953113-c3d9ef80-a2b9-11e9-8f0b-f400234da641.png' alt='gaa-win%-teams' width='580'/>
 </p>
 
+### Exploring Different Prediction Methods
+The main functionality of the ```GraphModel()``` class is to support easy development of various prediction methods and visualization functions.
+
+#### Goals For (GF) Goals Against (GA)
+The ratio of GF to GA is often used as the basis for a linear model. After some experimentation, it was found that \\[ $$ \frac{GF}{GA} + PP%*PK% $$ ] correlated highly with TWP.
+
+
+## Giveaways
+
+Since this dataset includes detailed play-by-play information, more analysis of the impact that a giveaway has on the game.
+
+More precisely, where, when and how frequently, do giveaways lead to goals? 
+
 ### Play after a Giveaway
+
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61005094-bad23800-a324-11e9-9add-55ac5d469e81.png' alt='bar-giveaway' width='600'/>
 </p>
