@@ -47,11 +47,9 @@ Trisurface plot of the number of converted GAs under 10 seconds by distance from
 ![barplot-goal-type-after-GA-under10sec](https://user-images.githubusercontent.com/21959159/58521117-87728a00-8178-11e9-85fe-a43a18417b36.png)
 
 
-![density-plot-play-until-goal-GA-with-stoppages](https://user-images.githubusercontent.com/21959159/58522103-1634d600-817c-11e9-805c-b34d4bb7f1e2.png)
-![density-plot-time-ga-with-stoppages](https://user-images.githubusercontent.com/21959159/58522118-2c429680-817c-11e9-9c90-67f27dc48ee0.png)
+
 ![scatter-under-3sec-goals](https://user-images.githubusercontent.com/21959159/58522140-3ebcd000-817c-11e9-82bd-eef97b24b10d.png)
 
 ![goalie-top-10-sv%](https://user-images.githubusercontent.com/21959159/58522148-40869380-817c-11e9-840d-8d94bdd0a9aa.png)
 ![regplot-win%-winPred](https://user-images.githubusercontent.com/21959159/58522149-40869380-817c-11e9-9f48-33ca647cfeaa.png)
-![winPred-boston-justGFGA](https://user-images.githubusercontent.com/21959159/58522150-40869380-817c-11e9-9b93-dcc7021f636b.png)
-![scatterplot-goalies-win%vsGAA](https://user-images.githubusercontent.com/21959159/58522151-40869380-817c-11e9-86a7-4d94cf59bdf1.png)
+
