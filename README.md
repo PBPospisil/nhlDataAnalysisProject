@@ -30,7 +30,7 @@ which declares an object of the MakeSubsets class. This class contains methods t
 Another goal of this project was to investigate the power of certain indicators to predict win percentage and to illustrate strength of prediction using the developed graphing library.
 ### Goals Against Average as a predictor
 <p align='center'>
-  <img src='https://user-images.githubusercontent.com/21959159/60956206-8c6e4180-a2bf-11e9-861d-8cf56011061f.png' alt='gaa-win%-goalies' width='600'/>
+  <img src='https://user-images.githubusercontent.com/21959159/60957127-5a5ddf00-a2c1-11e9-93a9-caae0e07dcad.png' alt='gaa-win%-goalies' width='600'/>
 </p>
 
 
