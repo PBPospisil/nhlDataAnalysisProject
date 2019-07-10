@@ -39,6 +39,9 @@ The class ```GraphGoalieStats()```, takes keyword arguments ```mode``` and ```fi
 
 #### Goaltender Win Percentage
 
+```mode```: accepts 'GAA' or 'savePercentage'
+```figure_name```: string-type file name of figure
+
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/60957127-5a5ddf00-a2c1-11e9-93a9-caae0e07dcad.png' alt='gaa-win%-goaltender' width='600'/>
 </p>
