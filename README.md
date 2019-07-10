@@ -33,11 +33,10 @@ Another goal of this project was to investigate the power of certain indicators 
   <img src='https://user-images.githubusercontent.com/21959159/60957127-5a5ddf00-a2c1-11e9-93a9-caae0e07dcad.png' alt='gaa-win%-goalies' width='600'/>
 </p>
 
-
-
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/60953113-c3d9ef80-a2b9-11e9-8f0b-f400234da641.png' alt='gaa-win%-teams' width='580'/>
 </p>
+
 ### Play after a Giveaway
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/60748876-770bb700-9f4f-11e9-8150-0f58b4e35c35.png' alt='bar-giveaway' width='600'/>
