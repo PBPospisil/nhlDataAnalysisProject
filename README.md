@@ -61,7 +61,7 @@ The ratio of GF to GA is often used as the basis for a linear model. After some 
   <img src='https://latex.codecogs.com/svg.latex?%5Cbg_black%20%5Cfrac%7BGF%7D%7BGA%7D&plus;PP%5Ccdot%20PK' alt='bar-giveaway' />
 </p>
 
-correlated highly with TWP.
+correlates highly with TWP.
 
 
 ## Giveaways
