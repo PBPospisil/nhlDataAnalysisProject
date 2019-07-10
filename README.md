@@ -67,5 +67,3 @@ Trisurface plot of the number of converted GAs under 10 seconds by distance from
 ![scatter-under-3sec-goals](https://user-images.githubusercontent.com/21959159/58522140-3ebcd000-817c-11e9-82bd-eef97b24b10d.png)
 
 ![goalie-top-10-sv%](https://user-images.githubusercontent.com/21959159/58522148-40869380-817c-11e9-840d-8d94bdd0a9aa.png)
-![regplot-win%-winPred](https://user-images.githubusercontent.com/21959159/58522149-40869380-817c-11e9-9f48-33ca647cfeaa.png)
-
