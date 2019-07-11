@@ -64,7 +64,7 @@ The ratio of GF to GA is often used as the basis for a linear model. After some 
 correlates highly with TWP.
 
 <p align='center'>
-  <img src='https://user-images.githubusercontent.com/21959159/61023249-5e900800-a366-11e9-9ff5-53d2c9f4efc9.png' alt='error-winpred' align='center' width='600' />
+  <img src='https://user-images.githubusercontent.com/21959159/61024867-2db2d180-a36c-11e9-89e5-690f85697fbe.png' alt='scatter-winpred' align='center' width='600' />
 </p>
 
 <p align='center'>
