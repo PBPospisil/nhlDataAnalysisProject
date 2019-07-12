@@ -20,19 +20,26 @@ class GraphModel(GraphData):
 
     def __init__(self):
         GraphData.__init__(self)
-        self.team_info = self.get_column_types(self.drop_na_row(self.import_csv('../data/team_info.csv')), self.team_info_dtypes)
-        self.goalie_stats = self.get_column_types(self.drop_na_row(self.import_csv('../data/game_goalie_stats.csv')), self.goalie_stats_dtypes)
-        self.game = self.get_column_types(self.drop_na_row(self.import_csv('../data/game.csv')), self.game_dtypes)
-        self.team_stats = self.get_column_types(self.drop_na_row(self.import_csv('../data/game_teams_stats.csv')), self.team_stats_dtypes)
+        self.goalie_stats_dtypes = {'timeOnIce':'int',
+                                    'shots':'int', 'saves':'int',
+                                    'evenSaves':'int',
+                                    'evenShotsAgainst':'int',
+                                    'decision':'str'
+                                    }
+
+        self.team_info = self.get_column_types(self.import_csv('../data/team_info.csv'), self.team_info_dtypes)
+        self.goalie_stats = self.get_column_types(self.import_csv('../data/game_goalie_stats.csv'), self.goalie_stats_dtypes)
+        self.game = self.get_column_types(self.import_csv('../data/game.csv'), self.game_dtypes)
+        self.team_stats = self.get_column_types(self.import_csv('../data/game_teams_stats.csv'), self.team_stats_dtypes)
         self.team_season_id_dict = defaultdict(int)
         self.team_season = []
         self.epsilon = 0
         self.delta = 0
-        self.mse = 0; self.absolute_error_ = []; self.sse = 0;
+        self.mse = 0; self.absolute_error_ = []; self.sse = self.time_initial = 0
         self.mse_op = 1;
         self.op_alpha = 0
-        self.current_alpha = 0.6
-        self.winning = []; self.team = []; self.df_alpha = []; self.season_ = []; self.time = []
+        self.current_alpha = 0.75
+        self.winning = []; self.team = []; self.df_alpha = []; self.season_ = []; self.time = [];
 
     def only_regular_season(self, dataframe):
         for game in dataframe['game_id'].unique():
@@ -90,6 +97,7 @@ class GraphModel(GraphData):
                 self.team_season.iloc[team_season_id_index, 5] += team_stats_only_this_team.iloc[game_index, 11]
                 self.team_season.iloc[team_season_id_index, 6] += team_stats_only_this_team_opponent.iloc[game_index, 10]-team_stats_only_this_team_opponent.iloc[game_index, 11]
                 self.team_season.iloc[team_season_id_index, 7] += team_stats_only_this_team_opponent.iloc[game_index, 10]
+                self.team_season.iloc[team_season_id_index, 9] += team_stats_only_this_team.iloc[game_index, 6] - team_stats_only_this_team.iloc[game_index, 11]
 
     def goalie_stats_data_gather(self, team_season_id_index, team, season):
         goalie_stats_only_this_team = self.goalie_stats.loc[self.goalie_stats['team_id'] == team]
@@ -107,10 +115,6 @@ class GraphModel(GraphData):
                 self.team_season.iloc[team_season_id_index, 2] += 1
                 # GA
                 self.team_season.iloc[team_season_id_index, 10] += goalie_stats_only_this_team.iloc[game_index, 13] - goalie_stats_only_this_team.iloc[game_index, 11]
-                # GF
-                this_game = self.goalie_stats.loc[self.goalie_stats['game_id'] == game]
-                this_game_other_team = this_game.loc[this_game['team_id'] != team]
-                self.team_season.iloc[team_season_id_index, 9] += this_game_other_team['evenShotsAgainst'].sum() - this_game_other_team['evenSaves'].sum()
 
     def calculate_gaa(self, team_season_id_index):
         if self.team_season.iloc[team_season_id_index, 14]:
@@ -121,9 +125,11 @@ class GraphModel(GraphData):
     def calculate_win_stats(self, team_season_id_index):
         self.team_season.iloc[team_season_id_index, 3] = self.team_season.iloc[team_season_id_index, 1] / self.team_season.iloc[team_season_id_index, 2]
 
-        self.team_season.iloc[team_season_id_index, 8] = ((self.team_season.iloc[team_season_id_index, 9] / self.team_season.iloc[team_season_id_index, 10]) +
-                                                ((self.team_season.iloc[team_season_id_index, 5] / self.team_season.iloc[team_season_id_index, 4]) *
-                                                 (self.team_season.iloc[team_season_id_index, 6] / self.team_season.iloc[team_season_id_index, 7])))
+        self.team_season.iloc[team_season_id_index, 8] = (self.team_season.iloc[team_season_id_index, 9] / self.team_season.iloc[team_season_id_index, 10])
+
+        # self.team_season.iloc[team_season_id_index, 8] = ((self.team_season.iloc[team_season_id_index, 9] / self.team_season.iloc[team_season_id_index, 10]) +
+        #                                         ((self.team_season.iloc[team_season_id_index, 5] / self.team_season.iloc[team_season_id_index, 4]) *
+        #                                          (self.team_season.iloc[team_season_id_index, 6] / self.team_season.iloc[team_season_id_index, 7])))
         self.calculate_gaa(team_season_id_index)
 
     def clean_up(self, season_column_list, team_column_list):
@@ -147,10 +153,11 @@ class GraphModel(GraphData):
         self.clean_up(season_column_list, team_column_list)
 
     def get_alpha(self):
+        self.time_initial = time.time()
         for season in self.goalie_stats['season'].unique():
             self.find_op_alpha(season)
             self.absolute_error_ = []; self.mse = self.sse = self.op_alpha = 0
-            self.mse_op = 1; self.current_alpha = 0.6
+            self.mse_op = 1; self.current_alpha = 0.75
 
     def get_alpha_scatterplot(self, gfga_season_alpha):
         fig4, ax4 = plt.subplots()
@@ -162,8 +169,9 @@ class GraphModel(GraphData):
         plt.scatter('time', 'alpha', data=gfga_season_alpha.loc[gfga_season_alpha['season'] == '20162017'], label='20162017', alpha=0.8, c='coral', linewidth=0.2, edgecolors='black', s=50, marker='.')
         plt.scatter('time', 'alpha', data=gfga_season_alpha.loc[gfga_season_alpha['season'] == '20172018'], label='20172018', alpha=0.8, c='limegreen', linewidth=0.2, edgecolors='black', s=50, marker='.')
 
-        plt.xlabel('gf/ga'); plt.ylabel('alpha coeffiecient'); plt.legend()
-        plt.title('alpha co. vs. gf/ga of each season 2010-2019')
+        plt.xlabel('time', fontsize=7); plt.ylabel('alpha coeffiecient', fontsize=7); plt.legend(fontsize=6)
+        plt.yticks(fontsize=6), plt.xticks(fontsize=6)
+        plt.title('alpha coefficient optimization over time for each season 2010-2019', fontsize=8)
         self.check_dir_and_save(fig4, '../img/win-prediction-winpercentage-scatterplot-alpha-separate.png')
 
 
@@ -197,7 +205,7 @@ class GraphModel(GraphData):
 
     def calculate_mse(self, total_games):
         if self.sse != 0:
-            if total_games != 0:
+            if total_games == 0:
                 self.mse = self.sse / 1
             else:
                 self.mse = self.sse / total_games
@@ -211,6 +219,7 @@ class GraphModel(GraphData):
             self.sse = 0; self.absolute_error_ = []; epoch+=1
             total_games += self.graph_all_teams_for_epsilon(season)
 
+
     def get_stats_for_alpha(self, season):
         total_games = gfga_sum = gfga_count = 0
         for season_ in self.goalie_stats['season'].unique():
@@ -220,10 +229,11 @@ class GraphModel(GraphData):
                     gfga_sum += winning['gfga'].sum()
                     gfga_count += winning['gfga'].count()
                     total_games += GPsum
-                self.winning.append(gfga_sum/gfga_count)
+                #self.winning.append(gfga_sum/gfga_count)
                 self.df_alpha.append(self.current_alpha)
                 self.season_.append(season)
-                self.time.append(time.time())
+                self.time.append(time.time() - self.time_initial)
+
 
     def graph_all_teams_for_epsilon(self, season=False):
         total_games = 0;
@@ -241,15 +251,15 @@ class GraphModel(GraphData):
 
         fig1, ax1 = plt.subplots()
         plt.plot(win_prediction_model['game_id'], win_prediction_model['predWinPercentage'], label='pred-corr win %', linestyle='-', color='#4E73AE', alpha=0.7, linewidth=0.5)
-        plt.plot(win_prediction_model['game_id'], win_prediction_model['predWinPercentage_gfga'], label='pred-0.8 win % error', linestyle='-', color='#ff0000', alpha=0.6, linewidth=0.5)
-        plt.plot(win_prediction_model['game_id'], win_prediction_model['actualWinPercentage'], label='actual win %', linestyle='-', color='#4E73B6', alpha=0.7, linewidth=0.5)
+        #plt.plot(win_prediction_model['game_id'], win_prediction_model['predWinPercentage_gfga'], label='pred-0.8 win % error', linestyle='-', color='#ff0000', alpha=0.6, linewidth=0.5)
+        #plt.plot(win_prediction_model['game_id'], win_prediction_model['actualWinPercentage'], label='actual win %', linestyle='-', color='#4E73B6', alpha=0.7, linewidth=0.5)
         plt.plot(win_prediction_model['game_id'], win_prediction_model['average_error'], label='average error', linestyle='-', color='000000', alpha=0.6, linewidth=0.5)
 
         plt.fill_between(win_prediction_model['game_id'], win_prediction_model['predWinPercentage']-win_prediction_model['absolute_error'], win_prediction_model['predWinPercentage']+win_prediction_model['absolute_error'], alpha=0.5, edgecolor='#597BB2', facecolor='#6C8BBB')
         plt.legend(fontsize=6); plt.xlabel('game', fontsize=7); plt.ylabel('win prediction', fontsize=7)
         plt.yticks([0.0,0.2,0.4,0.6,0.8,1.0],['0.0','0.2','0.4','0.6','0.8','1.0'], fontsize=6)
         plt.xticks(fontsize=6)
-        plt.title('Predicted win %, actual win %, of the ' + short_name_main_team + ' ' + team_name_main_team + ' in the 2017-2018 season', fontsize=8)
+        plt.title('Predicted win percentage of the ' + short_name_main_team + ' ' + team_name_main_team + ' in the 2017-2018 season', fontsize=8)
 
         self.check_dir_and_save(plt, '../img/win-prediction-winpercentage-error.png')
 
@@ -262,16 +272,21 @@ class GraphModel(GraphData):
 
     def graph_model_regplot(self):
         fig2, ax2 = plt.subplots()
-        ax2 = sns.regplot(x='winPred', y='winPercentage', data=self.team_season)
-        plt.xlabel('win prediction'); plt.ylabel('win percentage')
-        plt.title('Win percentage vs. win prediction of each season for every team 2010-2019')
+        ax2 = sns.regplot(x='winPred', y='winPercentage', data=self.team_season,
+                          marker='o', scatter_kws={'s': 13, 'alpha': 0.7, 'linewidths': 0.5},
+                          line_kws={'lw': 1.4, 'color': '#4E73AE'})
+        plt.xlabel('win prediction', fontsize=7); plt.ylabel('win percentage', fontsize=7)
+        plt.yticks(fontsize=6), plt.xticks(fontsize=6)
+        plt.title('Win percentage vs. win prediction of each season for every team 2010-2019', fontsize=8)
         self.check_dir_and_save(fig2, '../img/win-prediction-winpercentage-regplot.png')
 
     def graph_model_scatterplot(self):
         fig3, ax3 = plt.subplots()
-        ax3 = plt.scatter(x='winPred', y='winPercentage', data=self.team_season)
-        plt.xlabel('win prediction'); plt.ylabel('win percentage')
-        plt.title('Win percentage vs. win prediction of each season for every team 2010-2019')
+        ax3 = plt.scatter(x='winPred', y='winPercentage', data=self.team_season, alpha=0.7, c='#4E73AE', linewidth=0.2, edgecolors='#4E73AE', s=50, marker='.')
+        plt.xlabel('win prediction', fontsize=7); plt.ylabel('win percentage', fontsize=7)
+        plt.yticks(fontsize=6), plt.xticks(fontsize=6)
+        plt.title('win percentage vs. win prediction of each season for every team 2010-2019', fontsize=8)
+        plt.annotate(('Correlation coeffiecient:' + '{0:.' + str(3)+ 'f}').format(self.team_season['winPercentage'].corr(self.team_season['winPred'])), (1.425,0.3), fontsize=7)
         self.check_dir_and_save(fig3, '../img/win-prediction-winpercentage-scatterplot.png')
 
     def check_dir_and_save(cls, fig, figure_name):

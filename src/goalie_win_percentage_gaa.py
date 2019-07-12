@@ -1,25 +1,32 @@
-from graph_team_stats import GraphTeamStats
+from graph_goalie_stats import GraphGoalieStats
 
 
-team_gaa_win_percentage = GraphTeamStats()
+# initialize classes
+mode='GAA'
+if mode == 'GAA':
+    figure_name = '../img/goalie-gaa-winpercentage-regplot.png'
+else:
+    figure_name = '../img/goalie-svpercentage-winpercentage-regplot.png'
+goalie_gaa_win_percentage = GraphGoalieStats(mode=mode, figure_name=figure_name)
 
-team_gaa_win_percentage.only_regular_season(team_gaa_win_percentage.goalie_stats)
-team_gaa_win_percentage.only_regular_season(team_gaa_win_percentage.team_stats)
+# filter for just regular season games
+goalie_gaa_win_percentage.only_regular_season(goalie_gaa_win_percentage.goalie_stats)
+goalie_gaa_win_percentage.only_regular_season(goalie_gaa_win_percentage.team_stats)
 
-team_gaa_win_percentage.get_seasons(team_gaa_win_percentage.goalie_stats)
+# get season for each game for goalies
+goalie_gaa_win_percentage.get_seasons(goalie_gaa_win_percentage.goalie_stats)
 
 # get season for each game for teams
-team_gaa_win_percentage.get_seasons(team_gaa_win_percentage.team_stats)
+goalie_gaa_win_percentage.get_seasons(goalie_gaa_win_percentage.team_stats)
 
 # create unique ID for team-season
-team_gaa_win_percentage.create_unique_team_season_identifier(team_gaa_win_percentage.goalie_stats)
+goalie_gaa_win_percentage.create_unique_goalie_season_identifier(goalie_gaa_win_percentage.goalie_stats)
 
 # initialize dataframe such that each row is team-season unique
-team_gaa_win_percentage.create_team_season()
+goalie_gaa_win_percentage.create_goalie_season()
 
 # fill team-season dataframe
-team_gaa_win_percentage.fill_team_season()
+goalie_gaa_win_percentage.fill_goalie_season()
 
-team_gaa_win_percentage.games_played_minimum(60)
 
-team_gaa_win_percentage.create_plot_and_save()
+goalie_gaa_win_percentage.graph_regplot()
