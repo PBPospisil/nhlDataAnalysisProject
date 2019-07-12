@@ -75,6 +75,10 @@ correlates highly with TWP.
   <img src='https://user-images.githubusercontent.com/21959159/61027537-b2551e00-a373-11e9-9634-e0b4333b976a.png' alt='error-winpred-for-team' align='center' width='600' />
 </p>
 
+<p align='center'>
+  <img src='https://user-images.githubusercontent.com/21959159/61100303-fb17e000-a422-11e9-9833-1f83fb49d187.png' alt='alpha-scatter' align='center' width='600' />
+</p>
+
 ## Giveaways
 
 Since this dataset includes detailed play-by-play information, more analysis of the impact that a giveaway has on the game.
