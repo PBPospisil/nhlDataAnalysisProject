@@ -98,7 +98,7 @@ Additionally, a focus on a spatio-temporal distribution of giveaway
 ### Converted Giveaways
 Trisurface plot of the number of converted GAs under 10 seconds by distance from GA to net and time
 <p align='center'>
-  <img src='https://user-images.githubusercontent.com/21959159/58520036-3ca24380-8173-11e9-8646-6cd7a36ec1a7.gif' alt='gif'          width='600'/>
+  <img src='https://user-images.githubusercontent.com/21959159/61162272-1509ff00-a4c5-11e9-8dd2-cdaefcac3c11.gif' alt='gif'          width='600'/>
 </p>
 
 ![barplot-goal-type-after-GA-under10sec](https://user-images.githubusercontent.com/21959159/58521117-87728a00-8178-11e9-85fe-a43a18417b36.png)
