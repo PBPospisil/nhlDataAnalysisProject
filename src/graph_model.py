@@ -278,6 +278,7 @@ class GraphModel(GraphData):
         plt.xlabel('win prediction', fontsize=7); plt.ylabel('win percentage', fontsize=7)
         plt.yticks(fontsize=6), plt.xticks(fontsize=6)
         plt.title('Win percentage vs. win prediction of each season for every team 2010-2019', fontsize=8)
+        
         self.check_dir_and_save(fig2, '../img/win-prediction-winpercentage-regplot.png')
 
     def graph_model_scatterplot(self):
