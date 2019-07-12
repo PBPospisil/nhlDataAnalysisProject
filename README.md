@@ -85,9 +85,9 @@ correlates highly with TWP.
 
 ## Giveaways
 
-Since this dataset includes detailed play-by-play information, more analysis of the impact that a giveaway has on the game.
+Since this dataset includes detailed play-by-play information, analysis was done related to the impact that a giveaway has on the game. A particular point of interest was the impact that a giveaway has on the next play, or the string of plays to follow.
 
-More precisely, where, when and how frequently, do giveaways lead to goals? 
+Additionally, a focus on a spatio-temporal distribution of giveaway 
 
 ### Play after a Giveaway
 
