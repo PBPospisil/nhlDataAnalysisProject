@@ -101,9 +101,13 @@ Trisurface plot of the number of converted GAs under 10 seconds by distance from
   <img src='https://user-images.githubusercontent.com/21959159/61162272-1509ff00-a4c5-11e9-8dd2-cdaefcac3c11.gif' alt='gif'          width='600'/>
 </p>
 
-![barplot-goal-type-after-GA-under10sec](https://user-images.githubusercontent.com/21959159/58521117-87728a00-8178-11e9-85fe-a43a18417b36.png)
+<p align='center'>
+  <img src='https://user-images.githubusercontent.com/21959159/58521117-87728a00-8178-11e9-85fe-a43a18417b36.png' alt='barplot-goal-type-after-GA-under10sec' width='600'/>
+</p>
 
-![scatter-under-3sec-goals](https://user-images.githubusercontent.com/21959159/58522140-3ebcd000-817c-11e9-82bd-eef97b24b10d.png)
+<p align='center'>
+  <img src='https://user-images.githubusercontent.com/21959159/58522140-3ebcd000-817c-11e9-82bd-eef97b24b10d.png' alt='scatter-under-3sec-goals' width='600'/>
+</p>
 
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61169337-588e5880-a519-11e9-97b6-3207055ca310.png' alt='density-plot-time' width='600'/>
