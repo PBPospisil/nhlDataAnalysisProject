@@ -106,7 +106,7 @@ Trisurface plot of the number of converted GAs under 10 seconds by distance from
 </p>
 
 <p align='center'>
-  <img src='https://user-images.githubusercontent.com/21959159/58522140-3ebcd000-817c-11e9-82bd-eef97b24b10d.png' alt='scatter-under-3sec-goals' width='600'/>
+  <img src='https://user-images.githubusercontent.com/21959159/58522140-3ebcd000-817c-11e9-82bd-eef97b24b10d.png' alt='scatter-under-3sec-goals' width='725'/>
 </p>
 
 <p align='center'>
