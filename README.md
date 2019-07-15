@@ -55,17 +55,25 @@ Goals Against Average (GAA) is shown here to have a weak correlation with Goalte
 The main functionality of the ```GraphModel()``` class is to support easy development of various prediction methods and visualization functions.
 
 #### Goals For (GF) Goals Against (GA)
-The ratio of GF to GA is often used as the basis for a linear model. After some experimentation, it was found that
+The ratio of GF to GA is often used as the basis for a linear model. The scatter plot below has a win prediction calculated using
 
 <p align='center'>
-  <img src='https://latex.codecogs.com/svg.latex?%5Cbg_black%20%5Cfrac%7BGF%7D%7BGA%7D&plus;PP%5Ccdot%20PK' alt='bar-giveaway' />
+  <img src='https://latex.codecogs.com/svg.latex?%5Cbg_black%20%5Cfrac%7BGF%7D%7BGA%7D' alt='gf/ga' />
 </p>
 
-correlates highly with TWP.
+which has a correlation coefficient of 0.899 with TWP.
 
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61102169-04f11180-a42a-11e9-8068-bcb69d05e061.png' alt='scatter-winpred-noalpha' align='center' width='600' />
 </p>
+
+After some experimentation, it was found that a win prediction calculated using
+
+<p align='center'>
+  <img src='https://latex.codecogs.com/svg.latex?%5Cbg_black%20%5Cfrac%7BGF%7D%7BGA%7D&plus;PP%5Ccdot%20PK' alt='gf/ga+pk*pp' />
+</p>
+
+correlates highly with TWP. 
 
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61024867-2db2d180-a36c-11e9-89e5-690f85697fbe.png' alt='scatter-winpred-withalpha' align='center' width='600' />
