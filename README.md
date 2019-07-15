@@ -114,5 +114,9 @@ Trisurface plot of the number of converted GAs under 10 seconds by distance from
 </p>
 
 <p align='center'>
+  <img src='https://user-images.githubusercontent.com/21959159/61193300-ccdf0e00-a677-11e9-8d1b-aecd2596fa6a.png' alt='density-plot-plays-after' width='600'/>
+</p>
+
+<p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61169340-5fb56680-a519-11e9-8dcb-f7a1644fc19d.png' alt='goalie-top-10-sv%' width='600'/>
 </p>
