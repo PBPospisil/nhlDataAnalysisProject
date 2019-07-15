@@ -102,7 +102,7 @@ Trisurface plot of the number of converted GAs under 10 seconds by distance from
 </p>
 
 <p align='center'>
-  <img src='https://user-images.githubusercontent.com/21959159/58521117-87728a00-8178-11e9-85fe-a43a18417b36.png' alt='barplot-goal-type-after-GA-under10sec' width='600'/>
+  <img src='https://user-images.githubusercontent.com/21959159/61211916-089cc680-a6be-11e9-9668-1ee7a6587ec0.png' alt='barplot-goal-type-after-GA-under10sec' width='600'/>
 </p>
 
 <p align='center'>
