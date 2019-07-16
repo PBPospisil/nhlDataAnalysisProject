@@ -73,15 +73,21 @@ After some experimentation, it was found that a win prediction calculated using
   <img src='https://latex.codecogs.com/svg.latex?%5Cbg_black%20%5Cfrac%7BGF%7D%7BGA%7D&plus;PP%5Ccdot%20PK' alt='gf/ga+pk*pp' />
 </p>
 
-correlates highly with TWP. 
+correlates highly with TWP, with a correlation coefficient of 0.911. 
 
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61024867-2db2d180-a36c-11e9-89e5-690f85697fbe.png' alt='scatter-winpred-withalpha' align='center' width='600' />
 </p>
 
+#### Error in the Model
+
+To see how the model performs, ```GraphModel ``` has the option to create line plots with absolute error margins of a given team and season. Overall team win percentage in a season should be easier to predict as a season goes on, due to the distribution centering around am average win percentage.
+
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61011268-1efdf780-a337-11e9-82ff-192e637bd07a.png' alt='error-winpred-for-team' align='center' width='600' />
 </p>
+
+
 
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61027537-b2551e00-a373-11e9-9634-e0b4333b976a.png' alt='error-winpred-for-team' align='center' width='600' />
