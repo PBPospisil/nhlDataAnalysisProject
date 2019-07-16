@@ -123,19 +123,27 @@ Additionally, a focus on a spatio-temporal distribution of giveaway
   <img src='https://user-images.githubusercontent.com/21959159/61005094-bad23800-a324-11e9-9add-55ac5d469e81.png' alt='bar-giveaway' width='600'/>
 </p>
 
-### Converted Giveaways
-Trisurface plot of the number of converted GAs under 10 seconds by distance from GA to net and time
-<p align='center'>
-  <img src='https://user-images.githubusercontent.com/21959159/61162272-1509ff00-a4c5-11e9-8dd2-cdaefcac3c11.gif' alt='gif'          width='600'/>
-</p>
+### Goal Type after a Giveaway
 
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61211916-089cc680-a6be-11e9-9668-1ee7a6587ec0.png' alt='barplot-goal-type-after-GA-under10sec' width='600'/>
 </p>
 
+
+### Converted Giveaways
+
+Trisurface plot of the number of converted GAs under 10 seconds by distance from GA to net and time
+<p align='center'>
+  <img src='https://user-images.githubusercontent.com/21959159/61162272-1509ff00-a4c5-11e9-8dd2-cdaefcac3c11.gif' alt='gif'          width='600'/>
+</p>
+
+The scatter plot below shows the spatial distribution of the types of goals scored within 3 seconds of a giveaway.
+
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/58522140-3ebcd000-817c-11e9-82bd-eef97b24b10d.png' alt='scatter-under-3sec-goals' width='725'/>
 </p>
+
+The density plots below illustrate distributions of the time after a giveaway and number of plays after a giveaway before a goal is scored. The goals used in the plots are only scored after a giveaway and before a stoppage in play. Goals aren't included if a stoppage occurs after a giveaway and before a goal.
 
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61169337-588e5880-a519-11e9-97b6-3207055ca310.png' alt='density-plot-time' width='600'/>
@@ -144,6 +152,10 @@ Trisurface plot of the number of converted GAs under 10 seconds by distance from
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61193300-ccdf0e00-a677-11e9-8d1b-aecd2596fa6a.png' alt='density-plot-plays-after' width='600'/>
 </p>
+
+## Goaltender Save Percentage
+
+The line plot below includes 10 goaltenders with the most TOI 
 
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61169340-5fb56680-a519-11e9-8dcb-f7a1644fc19d.png' alt='goalie-top-10-sv%' width='600'/>
