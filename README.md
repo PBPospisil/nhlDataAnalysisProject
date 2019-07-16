@@ -115,7 +115,7 @@ The scatter plot of alpha values for each season below illustrates convergence o
 
 Since this dataset includes detailed play-by-play information, analysis was done related to the impact that a giveaway has on the game. A particular point of interest was the impact that a giveaway has on the next play, or the string of plays to follow.
 
-Additionally, a focus on a spatio-temporal distribution of giveaway 
+Additionally, a focus on a spatio-temporal distribution of converted giveaways 
 
 ### Play after a Giveaway
 
@@ -130,7 +130,7 @@ Additionally, a focus on a spatio-temporal distribution of giveaway
 </p>
 
 
-### Converted Giveaways
+### Converted Giveaway Distribution based on Time and Distance from net
 
 Trisurface plot of the number of converted GAs under 10 seconds by distance from GA to net and time
 <p align='center'>
@@ -143,11 +143,13 @@ The scatter plot below shows the spatial distribution of the types of goals scor
   <img src='https://user-images.githubusercontent.com/21959159/58522140-3ebcd000-817c-11e9-82bd-eef97b24b10d.png' alt='scatter-under-3sec-goals' width='725'/>
 </p>
 
-The density plots below illustrate distributions of the time after a giveaway and number of plays after a giveaway before a goal is scored. The goals used in the plots are only scored after a giveaway and before a stoppage in play. Goals aren't included if a stoppage occurs after a giveaway and before a goal.
+The density plots below illustrate distributions of the time after a giveaway and number of plays after a giveaway before a goal is scored. The goals used in the plots are only scored after a giveaway and before a stoppage in play. Goals aren't included if a stoppage occurs after a giveaway and before a goal. 
 
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61169337-588e5880-a519-11e9-97b6-3207055ca310.png' alt='density-plot-time' width='600'/>
 </p>
+
+Declaring an instance of ```GraphGiveawayGoals()``` and calling create_density_plot() with keyword argument mode set to 'time' or 'count'.
 
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61193300-ccdf0e00-a677-11e9-8d1b-aecd2596fa6a.png' alt='density-plot-plays-after' width='600'/>
