@@ -92,7 +92,7 @@ However, the predictive ability of the model is underwhelming as shown in the li
 In order to compensate for the overestimate in the model, the prediction formula was modified with a coefficient as follows 
 
 <p align='center'>
-  <img src='https://latex.codecogs.com/svg.latex?PredW%20%3A%3D%20%5Calpha%20%5Ccdot%20%5Cleft%20%28%20%5Cfrac%7BGF%7D%7BGA%7D%20&plus;%20PP%5Ccdot%20PK%20%5Cright%20%29' alt='gf/ga+pk*pp' />
+  <img src='https://latex.codecogs.com/svg.latex?PredW%20%3A%3D%20%5Calpha%20%5Ccdot%20%5Cleft%20%5B%20%5Cfrac%7BGF%7D%7BGA%7D%20&plus;%20PP%5Ccdot%20PK%20%5Cright%20%5D' alt='gf/ga+pk*pp' />
 </p>
 
 The alpha coefficient is optimized by minimizing mean squared error (MSE) of each call to the ```LinearModel()``` class, until an iterative (time-out) or optimized-value threshold is reached. This also allows for a specific value to be optimized given a certain subset of data (i.e. for a single season or team).
@@ -105,7 +105,7 @@ The plot below is of the same team and season, but with an optimized alpha coeff
 
 Error in model prediction is reduced by at least 50% with an alpha of 0.800.
 
-The scatter plot of alpha values for each season below illustrates convergence of the alpha coefficient. Because predicted TWP is largely dependent on GF/GA, alpha responds changes in GF/GA. This explains the decrease in the alpha convergence value for the 2016-2017 season, as GF/GA spikes by late 2015 into 2016. This could be explained by the added coach's challenge in 2015-2016, the purpose of which was partially to increase goals by limiting overturned goals.
+The scatter plot of alpha values for each season below illustrates convergence of the alpha coefficient. Because predicted TWP is largely dependent on GF/GA, alpha responds to changes in GF/GA. This explains the decrease in the alpha convergence value for the 2016-2017 season, as GF/GA spikes by late 2015 into 2016. This could be explained by the added coach's challenge in 2015-2016, the purpose of which was partially to increase goals by limiting overturned goals.
 
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61100303-fb17e000-a422-11e9-9833-1f83fb49d187.png' alt='alpha-scatter' align='center' width='600' />
