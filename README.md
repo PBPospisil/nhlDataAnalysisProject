@@ -103,7 +103,7 @@ The plot below is of the same team and season, but with an optimized alpha coeff
   <img src='https://user-images.githubusercontent.com/21959159/61027537-b2551e00-a373-11e9-9634-e0b4333b976a.png' alt='error-winpred-for-team' align='center' width='600' />
 </p>
 
-Error in model prediction is reduced by at least 50% with an alpha of .
+Error in model prediction is reduced by at least 50% with an alpha of 0.800.
 
 The scatter plot of alpha values for each season below illustrates convergence of the alpha coefficient. Because predicted TWP is largely dependent on GF/GA, alpha responds changes in GF/GA. This explains the decrease in the alpha convergence value for the 2016-2017 season, as GF/GA spikes by late 2015 into 2016. This could be explained by the added coach's challenge in 2015-2016, the purpose of which was partially to increase goals by limiting overturned goals.
 
