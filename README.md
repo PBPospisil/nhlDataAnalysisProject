@@ -81,7 +81,7 @@ correlates highly with TWP, with a correlation coefficient of 0.911.
 
 #### Error in the Model
 
-To see how the model performs, ```GraphModel()``` has the option to create line plots with absolute error margins of a given team and season. Overall team win percentage in a season should be easier to predict as a season goes on, due to the distribution centering around am average win percentage.
+To see how the model performs, ```GraphModel()``` has the option to create line plots with absolute error margins of a given team and season. One plot is produced by a single call to ```LinearModel()```. Overall team win percentage in a season should be easier to predict as a season goes on, due to the distribution centering around am average win percentage.
 
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61258485-37a14f80-a733-11e9-9dc8-18c1a7c0e967.png' alt='error-winpred-for-team' align='center' width='600' />
@@ -89,15 +89,21 @@ To see how the model performs, ```GraphModel()``` has the option to create line 
 
 However, the predictive ability of the model is underwhelming as shown in the line plot above. With ~10% error in the model by the last game and an average error that slides under 20%, the predicted TWP is generally too optimistic and higher than the actual win percentage.
 
-In order to compensate for the overestimate in the model, the prediction formula was modified with a coefficient, 
+In order to compensate for the overestimate in the model, the prediction formula was modified with a coefficient as follows 
 
 <p align='center'>
   <img src='https://latex.codecogs.com/gif.latex?PredW%20%3A%3D%20%5Calpha%20%5Ccdot%20%5Cleft%20%28%20%5Cfrac%7BGF%7D%7BGA%7D%20&plus;%20PP%5Ccdot%20PK%20%5Cright%20%29' alt='gf/ga+pk*pp' />
 </p>
 
+The alpha coefficient is optimized by minimizing mean squared error (MSE) of each call to the ```LinearModel()``` class, until an iterative (time-out) or optimized-value threshold is reached. This also allows for a specific value to be optimized given a certain subset of data (i.e. for a single season or team).
+
+The plot below is of the same team and season, but with an optimized alpha coefficient.
+
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61027537-b2551e00-a373-11e9-9634-e0b4333b976a.png' alt='error-winpred-for-team' align='center' width='600' />
 </p>
+
+
 
 <p align='center'>
   <img src='https://user-images.githubusercontent.com/21959159/61100303-fb17e000-a422-11e9-9833-1f83fb49d187.png' alt='alpha-scatter' align='center' width='600' />
