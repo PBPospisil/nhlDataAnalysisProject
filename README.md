@@ -67,7 +67,7 @@ which has a correlation coefficient of 0.899 with TWP.
   <img src='https://user-images.githubusercontent.com/21959159/61102169-04f11180-a42a-11e9-8068-bcb69d05e061.png' alt='scatter-winpred-noalpha' align='center' width='600' />
 </p>
 
-After some experimentation, it was found that a win prediction calculated using
+After some experimentation, it was found that a win prediction calculated using the following equation
 
 <p align='center'>
   <img src='https://latex.codecogs.com/svg.latex?%5Cbg_black%20%5Cfrac%7BGF%7D%7BGA%7D&plus;PP%5Ccdot%20PK' alt='gf/ga+pk*pp' />
