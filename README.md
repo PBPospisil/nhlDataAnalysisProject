@@ -92,7 +92,7 @@ However, the predictive ability of the model is underwhelming as shown in the li
 In order to compensate for the overestimate in the model, the prediction formula was modified with a coefficient as follows 
 
 <p align='center'>
-  <img src='https://latex.codecogs.com/gif.latex?PredW%20%3A%3D%20%5Calpha%20%5Ccdot%20%5Cleft%20%28%20%5Cfrac%7BGF%7D%7BGA%7D%20&plus;%20PP%5Ccdot%20PK%20%5Cright%20%29' alt='gf/ga+pk*pp' />
+  <img src='https://latex.codecogs.com/svg.latex?PredW%20%3A%3D%20%5Calpha%20%5Ccdot%20%5Cleft%20%28%20%5Cfrac%7BGF%7D%7BGA%7D%20&plus;%20PP%5Ccdot%20PK%20%5Cright%20%29' alt='gf/ga+pk*pp' />
 </p>
 
 The alpha coefficient is optimized by minimizing mean squared error (MSE) of each call to the ```LinearModel()``` class, until an iterative (time-out) or optimized-value threshold is reached. This also allows for a specific value to be optimized given a certain subset of data (i.e. for a single season or team).
